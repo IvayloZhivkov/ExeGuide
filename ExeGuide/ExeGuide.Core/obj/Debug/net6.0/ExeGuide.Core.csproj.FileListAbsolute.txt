@@ -12,3 +12,17 @@ D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.pdb
 D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ref\ExeGuide.Core.dll
 D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.runtimeconfig.json
 D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.genruntimeconfig.cache
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.deps.json
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.runtimeconfig.json
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.pdb
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.csproj.AssemblyReference.cache
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.AssemblyInfoInputs.cache
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.AssemblyInfo.cs
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.csproj.CoreCompileInputs.cache
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\refint\ExeGuide.Core.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.pdb
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.genruntimeconfig.cache
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ref\ExeGuide.Core.dll
