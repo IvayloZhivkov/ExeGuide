@@ -1,0 +1,14 @@
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.csproj.AssemblyReference.cache
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.GeneratedMSBuildEditorConfig.editorconfig
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.AssemblyInfoInputs.cache
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.AssemblyInfo.cs
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.csproj.CoreCompileInputs.cache
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\bin\Debug\net6.0\ExeGuide.DataBase.deps.json
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\bin\Debug\net6.0\ExeGuide.DataBase.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\bin\Debug\net6.0\ExeGuide.DataBase.pdb
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\refint\ExeGuide.DataBase.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.pdb
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ref\ExeGuide.DataBase.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\bin\Debug\net6.0\ExeGuide.DataBase.runtimeconfig.json
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.DataBase\obj\Debug\net6.0\ExeGuide.DataBase.genruntimeconfig.cache

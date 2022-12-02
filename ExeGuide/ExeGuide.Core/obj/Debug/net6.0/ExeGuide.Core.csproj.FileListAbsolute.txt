@@ -1,0 +1,14 @@
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.deps.json
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.pdb
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.csproj.AssemblyReference.cache
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.AssemblyInfoInputs.cache
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.AssemblyInfo.cs
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.csproj.CoreCompileInputs.cache
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\refint\ExeGuide.Core.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.pdb
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ref\ExeGuide.Core.dll
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.Core.runtimeconfig.json
+D:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.genruntimeconfig.cache

@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExeGuide", "ExeGuide\ExeGuide.csproj", "{6422818E-E625-4005-9841-973997151030}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DF6384A0-7F17-487F-9E93-8074EB9EACD6} = {DF6384A0-7F17-487F-9E93-8074EB9EACD6}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExeGuide.Core", "ExeGuide.Core\ExeGuide.Core.csproj", "{DF6384A0-7F17-487F-9E93-8074EB9EACD6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{264B330F-ADA5-4517-B6B6-7909F6059CAF} = {264B330F-ADA5-4517-B6B6-7909F6059CAF}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExeGuide.DataBase", "ExeGuide.DataBase\ExeGuide.DataBase.csproj", "{264B330F-ADA5-4517-B6B6-7909F6059CAF}"
 EndProject

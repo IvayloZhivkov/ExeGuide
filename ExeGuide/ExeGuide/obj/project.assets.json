@@ -764,6 +764,21 @@
             "rid": "win"
           }
         }
+      },
+      "ExeGuide.DataBase/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.4",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.4"
+        },
+        "compile": {
+          "bin/placeholder/ExeGuide.DataBase.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExeGuide.DataBase.dll": {}
+        }
       }
     }
   },
@@ -2253,10 +2268,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ExeGuide.DataBase/1.0.0": {
+      "type": "project",
+      "path": "../ExeGuide.DataBase/ExeGuide.DataBase.csproj",
+      "msbuildProject": "../ExeGuide.DataBase/ExeGuide.DataBase.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ExeGuide.DataBase >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.4",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.4",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.4",
@@ -2295,7 +2316,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.DataBase\\ExeGuide.DataBase.csproj": {
+              "projectPath": "D:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.DataBase\\ExeGuide.DataBase.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
