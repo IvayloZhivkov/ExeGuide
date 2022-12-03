@@ -49,10 +49,7 @@ namespace ExeGuide.Controllers
 
         public IActionResult Details(int id)
         {
-            if (User.IsInRole(EditorRolleName))
-            {
-                return RedirectToAction("Details", "Editor", new { area = AreaName });
-            }
+           
             if (!this.exerciseService.Exists(id))
             {
                 return BadRequest();

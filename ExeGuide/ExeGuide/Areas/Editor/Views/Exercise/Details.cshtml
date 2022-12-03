@@ -1,0 +1,29 @@
+﻿@model ExerciseDetailsServiceModel
+
+@{
+    ViewBag.Title = "Exercise Details";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+<div class="container" style="display:inline">
+    <div class="row">
+
+        <div class="col-4">
+            <img class="card-img-top" style="width: 45rem;"
+                 src="@Model.ImageUrl" alt="Exercise Image">
+        </div>
+        <div>
+
+        </div>
+        <div class="card col-8 border-0">
+            <p style="font-size:25px;"><u>@Model.Name</u></p>
+            <p>@Model.Description</p>
+            <p>Main Muscle Group: <b>@Model.MainCategory</b></p>
+            <p>Specificated Muscle Targeted: <b>@Model.SubCategory</b></p>
+            <p>Equipment Used: <b>@Model.Equipment</b></p>
+        </div>
+
+
+    </div>
+</div>
