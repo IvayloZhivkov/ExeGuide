@@ -1,11 +1,11 @@
-﻿using ExeGuide.Data.Configurations;
-using ExeGuide.Data.Entities;
-using static ExeGuide.Data.Constants.EditorConstants;
+﻿using ExeGuide.DataBase.Data.Configurations;
+using ExeGuide.DataBase.Data.Entities;
+using static ExeGuide.DataBase.Data.Constants.EditorConstants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExeGuide.Data
+namespace ExeGuide.DataBase.Data
 {
     public class ExeGuideDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
     {
@@ -54,6 +54,7 @@ namespace ExeGuide.Data
                .WithMany(e => e.TrainingUsersExercises)
                .HasForeignKey(e => e.UserId);
 
+            //The EDITOR rolle password is = admin123
             SeedEditor();
             builder.Entity<TrainingUser>()
                 .HasData(this.Editor);

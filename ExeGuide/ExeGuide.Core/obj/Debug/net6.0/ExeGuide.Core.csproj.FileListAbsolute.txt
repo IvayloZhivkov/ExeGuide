@@ -26,3 +26,6 @@ C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\refint\ExeGuide.Cor
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.pdb
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.genruntimeconfig.cache
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ref\ExeGuide.Core.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.DataBase.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\bin\Debug\net6.0\ExeGuide.DataBase.pdb
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide.Core\obj\Debug\net6.0\ExeGuide.Core.csproj.CopyComplete

@@ -1,0 +1,19 @@
+﻿
+@model IEnumerable<ExerciseServiceModel>
+
+@{
+    ViewBag.Title = "My Favourites";
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+
+@if(!Model.Any())
+{
+    <h2 class="text-center">You have no favourites yet!</h2>
+}
+<div class=" row">
+    @foreach(var exercise in Model){
+        <partial name="_FavouriteExercisesPartial" model="@exercise" />
+    }
+</div>

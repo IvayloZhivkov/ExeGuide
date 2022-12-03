@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using ExeGuide.Data.Entities;
+using ExeGuide.DataBase.Data.Entities;
 
-namespace ExeGuide.Data.Configurations
+namespace ExeGuide.DataBase.Data.Configurations
 {
     public class MainCategoryConfiguration : IEntityTypeConfiguration<MainCategory>
     {

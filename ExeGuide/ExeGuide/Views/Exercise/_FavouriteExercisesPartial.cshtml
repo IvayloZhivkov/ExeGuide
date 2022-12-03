@@ -1,0 +1,12 @@
+﻿@model ExerciseServiceModel
+
+<div class="col-md-4">
+    <div class="card mb-3">
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Exercise Image">
+        <div class="card-body text-center">
+            <h4>@Model.Name</h4>
+            <a asp-controller="Exercise" asp-action="Details" asp-route-id="@Model.Id"
+               class="btn btn-success">Exercise Details</a>
+        </div>
+    </div>
+</div>

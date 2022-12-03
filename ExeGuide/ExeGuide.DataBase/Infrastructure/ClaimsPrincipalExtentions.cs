@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace ExeGuide.Infrastructure
+namespace ExeGuide.DataBase.Infrastructure
 {
     public static class ClaimsPrincipalExtentions
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ExeGuide.Data.Entities
+namespace ExeGuide.DataBase.Data.Entities
 {
     public class Exercise
     {

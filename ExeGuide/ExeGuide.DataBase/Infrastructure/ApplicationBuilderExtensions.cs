@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using ExeGuide.Data.Entities;
-using static ExeGuide.Data.Constants.EditorConstants;
+using ExeGuide.DataBase.Data.Entities;
+using static ExeGuide.DataBase.Data.Constants.EditorConstants;
 
-namespace ExeGuide.Core.Infrastructure
+namespace ExeGuide.DataBase.Infrastructure
 {
     public static class ApplicationBuilderExtensions
     {

@@ -141,3 +141,7 @@ C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\obj\Debug\net6.0\refint\ExeGuide.dll
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\obj\Debug\net6.0\ExeGuide.pdb
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\obj\Debug\net6.0\ExeGuide.genruntimeconfig.cache
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\obj\Debug\net6.0\ref\ExeGuide.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\bin\Debug\net6.0\ExeGuide.Core.dll
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\bin\Debug\net6.0\ExeGuide.Core.pdb
+C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\obj\Debug\net6.0\scopedcss\Views\Exercise\_ExercisesPartial.cshtml.rz.scp.css

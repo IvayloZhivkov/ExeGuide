@@ -1,0 +1,29 @@
+﻿@model ExerciseServiceModel
+
+
+<div class="col-md-4">
+    <div class="card mb-3" style="border-color:black">
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Exercise Image">
+        <div class="card-body text-center">
+            <h4>@Model.Name</h4>
+            <div>
+                <hr />
+            </div>
+            <div>
+                <a asp-controller="Exercise" asp-action="Details" asp-route-id="@Model.Id"
+                   class="btn btn-success" style="background-color:cornflowerblue; border-color:cornflowerblue ">Exercise Details</a>
+            </div>
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <div>
+                        <form class="input-group-sm" 
+                              style="margin-top: 10px" 
+                              asp-controller="Exercise"
+                              asp-action="Favourites" asp-route-id="@Model.Id"> 
+                            <input class="btn btn-primary" type="submit" value="Add To Favourites" />
+                        </form>
+                    </div>
+                }
+        </div>
+    </div>
+</div>

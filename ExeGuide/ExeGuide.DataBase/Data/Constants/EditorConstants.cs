@@ -1,4 +1,4 @@
-﻿namespace ExeGuide.Data.Constants
+﻿namespace ExeGuide.DataBase.Data.Constants
 {
     public static class EditorConstants
     {

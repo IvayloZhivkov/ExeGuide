@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ExeGuide.Data.Migrations
+namespace ExeGuide.DataBase.Data.Migrations
 {
     public partial class Editor : Migration
     {

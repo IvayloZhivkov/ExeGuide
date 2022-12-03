@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ExeGuide.Data.Entities
+namespace ExeGuide.DataBase.Data.Entities
 {
     public class SubCategory
     {
