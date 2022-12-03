@@ -12,7 +12,7 @@
     <div class="row">
         <div class="form-group col-md-3 d-flex justify-content-between">
             <div class="form-group">
-                <label asp-for="MainCategory"></label>
+                <label style="color:white" asp-for="MainCategory"></label>
                 <select asp-for="MainCategoryName" class="form-control">
                     <option value="">All</option>
                     @foreach (var category in Model.MainCategory)
@@ -25,8 +25,8 @@
 
         <div class="form-group col-md-3 d-flex justify-content-between">
             <div class="form-group">
-                <label asp-for="SubCategory"></label>
-                <select asp-for="SubCategoryName" class="form-control">
+                <label style="color:white" asp-for="SubCategory"></label>
+                <select  asp-for="SubCategoryName" class="form-control">
                     <option value="">All</option>
                     @foreach (var category in Model.SubCategory)
                     {
@@ -38,7 +38,7 @@
 
         <div class="form-group col-md-3 d-flex justify-content-between">
             <div class="form-group">
-                <label asp-for="Equipment"></label>
+                <label style="color:white" asp-for="Equipment"></label>
                 <select asp-for="EquipmentName" class="form-control">
                     <option value="">All</option>
                     @foreach (var category in Model.Equipment)
@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-group col-md-3">
-            <label asp-for="SearchTerm"></label>
+            <label style="color:white" asp-for="SearchTerm"></label>
             <input asp-for="SearchTerm" class="form-control" placeholder="...">
         </div>
 
