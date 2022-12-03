@@ -8,10 +8,12 @@ using ExeGuide.Core.Services.Exercises.Models;
 using ExeGuide.Core.Services.Models;
 using ExeGuide.Core.Services.Users;
 using ExeGuide.Core.Services.Exercises;
+using Microsoft.Extensions.Logging;
+using System.Net;
 
 namespace ExeGuide.Core.Services.Exercises
 {
-    public class ExerciseService  : IExerciseService
+    public class ExerciseService : IExerciseService
     {
         public readonly ExeGuideDbContext data;
         public readonly IUserService user;
@@ -22,11 +24,11 @@ namespace ExeGuide.Core.Services.Exercises
             this.user = _user;
         }
 
-        public ExercisesQueryModel All( string searchTerm = null, string mainCategory = null,string subCategory = null, string equipment = null,int currPage = 1, int exercisesPerPage = 1)
+        public ExercisesQueryModel All(string searchTerm = null, string mainCategory = null, string subCategory = null, string equipment = null, int currPage = 1, int exercisesPerPage = 1)
         {
             var exerciseQuery = this.data.Exercises.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(mainCategory) )
+            if (!string.IsNullOrWhiteSpace(mainCategory))
             {
                 exerciseQuery = data.Exercises
                     .Where(h => h.MainCategory.MainCategoryName == mainCategory);
@@ -65,11 +67,11 @@ namespace ExeGuide.Core.Services.Exercises
             };
         }
 
-        public IEnumerable<string> AllEquipmentNames()=> this.data.Equipments.Select(c => c.Name).Distinct().ToList();
-        public IEnumerable<string> AllMainCategoriesNames() =>  this.data.MainCategories.Select(c => c.MainCategoryName).Distinct().ToList();
-        public IEnumerable<string> AllSubCategoriesNames()=>this.data.SubCategories.Select(c => c.SubCategoryName).Distinct().ToList();
-            
-        
+        public IEnumerable<string> AllEquipmentNames() => this.data.Equipments.Select(c => c.Name).Distinct().ToList();
+        public IEnumerable<string> AllMainCategoriesNames() => this.data.MainCategories.Select(c => c.MainCategoryName).Distinct().ToList();
+        public IEnumerable<string> AllSubCategoriesNames() => this.data.SubCategories.Select(c => c.SubCategoryName).Distinct().ToList();
+
+
 
         public IEnumerable<ExerciseIndexServiceModel> AllShowingSlide() =>
             this.data
@@ -81,9 +83,9 @@ namespace ExeGuide.Core.Services.Exercises
                 ImageUrl = e.ImageUrl
             });
 
-        public ExerciseDetailsServiceModel ExerciseDetailsById(int id)=> data.Exercises
-                .Where(e=>e.Id == id)
-                .Select(e=> new ExerciseDetailsServiceModel
+        public ExerciseDetailsServiceModel ExerciseDetailsById(int id) => data.Exercises
+                .Where(e => e.Id == id)
+                .Select(e => new ExerciseDetailsServiceModel
                 {
                     Id = e.Id,
                     Name = e.Name,
@@ -115,20 +117,76 @@ namespace ExeGuide.Core.Services.Exercises
 
         public void AddToFav(string userId, int exerciseId)
         {
-            
+
             TrainingUsersExercise userExercises = new TrainingUsersExercise()
             {
-               ExerciseId = exerciseId,
-               UserId = userId
+                ExerciseId = exerciseId,
+                UserId = userId
             };
             if (!data.TrainingUsersExercises.Contains(userExercises))
             {
-            data.TrainingUsersExercises.AddAsync(userExercises);
-            data.SaveChanges();
+                data.TrainingUsersExercises.AddAsync(userExercises);
+                data.SaveChanges();
             }
-                return;
+            return;
 
 
+        }
+
+        public IEnumerable<ExerciseMainCategoryModel> AllMainCategories() =>
+            this.data
+            .MainCategories
+            .Select(c => new ExerciseMainCategoryModel
+            {
+                Id = c.Id,
+                Name = c.MainCategoryName
+            })
+            .ToList();
+
+        public IEnumerable<ExerciseSubCategoryModel> AllSubCategories() =>
+            this.data
+            .SubCategories
+            .Select(c => new ExerciseSubCategoryModel
+            {
+                Id = c.Id,
+                Name = c.SubCategoryName
+            })
+            .ToList();
+        public IEnumerable<ExerciseEquipmentModel> AllEquipments() =>
+            this.data
+            .Equipments
+            .Select(c => new ExerciseEquipmentModel
+            {
+                Id = c.Id,
+                Name = c.Name
+            })
+            .ToList();
+
+        
+        public bool MainCategoryExists(int categoryId) => this.data.MainCategories.Any(c => c.Id == categoryId);
+
+        public bool SubCategoryExists(int categoryId) => this.data.SubCategories.Any(c => c.Id == categoryId);
+
+        public bool EquipmentExists(int categoryId) => this.data.Equipments.Any(c => c.Id == categoryId);
+
+        public int Create(string title, string description, string imgageUrl, int mainCategoryId, int subCategoryId, int equipmentId)
+        {
+
+            var ex = new Exercise
+            {
+                Name = title,
+                Description = description,
+                ImageUrl = imgageUrl,
+                MainCategoryId = mainCategoryId,
+                SubCategoryId= subCategoryId,
+                EquipmentId = equipmentId
+                
+            };
+
+            this.data.Exercises.Add(ex);
+            this.data.SaveChanges();
+
+            return ex.Id;
         }
     }
 }

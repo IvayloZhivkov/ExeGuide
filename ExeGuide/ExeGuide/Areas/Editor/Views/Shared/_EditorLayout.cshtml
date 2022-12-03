@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ExeGuide</title>
+    <title>@ViewData["Title"] - TrainingHelper</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TrainingHelper.styles.css" asp-append-version="true" />
 </head>
-<body style="  background-image: url(https://wallpapercave.com/wp/wp2639566.jpg); background-color:black;
+<body style="  background-image: url(https://wallpapercave.com/wp/wp2639566.jpg);background-color:black;
     margin-bottom: 50px;
     background-repeat: no-repeat;
     width: auto;
@@ -25,19 +25,25 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-
                         <div class="vertLine"> </div>
-
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="All">All Exercises</a>
                         </li>
 
-                        <div class="vertLine"> </div>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Add">Add Exercises</a>
-                        </li>
-
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <div class="vertLine"> </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Mine">My Favourites</a>
+                            </li>
+                        }
+                        @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated)
+                        {
+                            <div class="vertLine"> </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Add">Add Exercises</a>
+                            </li>
+                        }
 
                     </ul>
                     <partial name="_LoginPartial" />

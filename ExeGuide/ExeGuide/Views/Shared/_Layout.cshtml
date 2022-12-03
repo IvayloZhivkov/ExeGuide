@@ -37,8 +37,8 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Mine">My Favourites</a>
                                 </li>
                             }
-                            @if (this.User.IsInRole("Editor"))
-                            {
+                        @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole("Editing"))
+                        {
                                 <div class="vertLine"> </div>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Add">Add Exercises</a>

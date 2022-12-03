@@ -6,7 +6,7 @@ using ExeGuide.DataBase.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Metadata;
 using Microsoft.AspNetCore.Mvc;
-
+using static ExeGuide.DataBase.Data.Constants.EditorConstants;
 
 namespace ExeGuide.Controllers
 {
@@ -49,12 +49,25 @@ namespace ExeGuide.Controllers
 
         public IActionResult Details(int id)
         {
+            if (User.IsInRole(EditorRolleName))
+            {
+                return RedirectToAction("Details", "Editor", new { area = AreaName });
+            }
             if (!this.exerciseService.Exists(id))
             {
                 return BadRequest();
             }
             var exerciseModel = exerciseService.ExerciseDetailsById(id);
             return View(exerciseModel);
+        }
+
+        public IActionResult Add()
+        {
+            if (User.IsInRole(EditorRolleName))
+            {
+                return RedirectToAction("Add", "Exercise", new { area = AreaName });
+            }
+            return RedirectToAction("Index", "Home");
         }
 
 
