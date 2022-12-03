@@ -21,9 +21,10 @@ namespace ExeGuide.Controllers
             this.users = userService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
-        { 
-            
+        {
+
             var queryResults = this.exerciseService.All(
                 query.SearchTerm,
                 query.MainCategoryName,
@@ -49,7 +50,7 @@ namespace ExeGuide.Controllers
 
         public IActionResult Details(int id)
         {
-           
+
             if (!this.exerciseService.Exists(id))
             {
                 return BadRequest();
@@ -73,15 +74,15 @@ namespace ExeGuide.Controllers
         public async Task<IActionResult> Favourites(int id)
         {
             string currUserString = User.Id();
-            
+
             var user = users.GetUserById(currUserString);
-            
-            
+
+
             if (!exerciseService.Exists(id))
             {
                 return BadRequest();
             }
-           
+
             exerciseService.AddToFav(user.Id, id);
             return RedirectToAction(nameof(All));
         }
@@ -92,18 +93,20 @@ namespace ExeGuide.Controllers
         {
             IEnumerable<ExerciseServiceModel> myExercises = null;
 
-            
+
             var userId = User.Id();
             if (users.ExistById(userId))
             {
                 var user = users.GetUserById(userId);
-                
+
                 myExercises = exerciseService.AllExercisesById(user.Id);
             }
-                return View(myExercises);
-           
+            return View(myExercises);
+
         }
-       
+
+
+
 
 
     }

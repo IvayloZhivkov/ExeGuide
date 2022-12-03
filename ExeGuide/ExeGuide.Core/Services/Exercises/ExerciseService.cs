@@ -188,5 +188,13 @@ namespace ExeGuide.Core.Services.Exercises
 
             return ex.Id;
         }
+
+        public void Delete(int exerciseId)
+        {
+            var exerecise = data.Exercises.Find(exerciseId);
+
+            data.Remove(exerecise);
+            data.SaveChanges();
+        }
     }
 }

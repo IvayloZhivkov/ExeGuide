@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ExeGuide.Areas.Editor.Models;
 using ExeGuide.DataBase.Infrastructure;
 using static ExeGuide.DataBase.Data.Constants.EditorConstants;
+using ExeGuide.Core.Services.Exercises.Models;
 
 namespace TrainingHelper.Areas.Editor.Controllers
 {
@@ -20,33 +21,33 @@ namespace TrainingHelper.Areas.Editor.Controllers
             this.users = userService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
+        {
 
-        //public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
-        //{
+            var queryResults = this.exerciseService.All(
+                query.SearchTerm,
+                query.MainCategoryName,
+                query.SubCategoryName,
+                query.EquipmentName,
+                query.CurrentPage,
+                AllExercisesQueryModel.ExercisesPerPage);
 
-        //    var queryResults = this.exerciseService.All(
-        //        query.SearchTerm,
-        //        query.MainCategoryName,
-        //        query.SubCategoryName,
-        //        query.EquipmentName,
-        //        query.CurrentPage,
-        //        AllExercisesQueryModel.ExercisesPerPage);
+            query.TotalExerciseCount = queryResults.TotalExercisesCount;
 
-        //    query.TotalExerciseCount = queryResults.TotalExercisesCount;
+            query.Exercises = queryResults.Exercises;
 
-        //    query.Exercises = queryResults.Exercises;
+            var mainCategoryName = exerciseService.AllMainCategoriesNames();
+            var subCategoryName = exerciseService.AllSubCategoriesNames();
+            var equipmentName = exerciseService.AllEquipmentNames();
+            query.MainCategory = mainCategoryName;
+            query.SubCategory = subCategoryName;
+            query.Equipment = equipmentName;
 
-        //    var mainCategoryName = exerciseService.AllMainCategoriesNames();
-        //    var subCategoryName = exerciseService.AllSubCategoriesNames();
-        //    var equipmentName = exerciseService.AllEquipmentNames();
-        //    query.MainCategory = mainCategoryName;
-        //    query.SubCategory = subCategoryName;
-        //    query.Equipment = equipmentName;
+            return View(query);
+        }
 
-        //    return View(query);
-        //}
-
-
+        [HttpGet]
         public IActionResult Details(int id)
         {
             if (!this.exerciseService.Exists(id))
@@ -58,9 +59,9 @@ namespace TrainingHelper.Areas.Editor.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public IActionResult Add()
         {
-           
 
             return View(new ExerciseFormModel
             {
@@ -103,6 +104,36 @@ namespace TrainingHelper.Areas.Editor.Controllers
             return RedirectToAction(nameof(Details), new { id = newExercise });
         }
 
+        [Authorize]
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            if (!exerciseService.Exists(id))
+            {
+                return BadRequest();
+            }
+
+            var exercise = exerciseService.ExerciseDetailsById(id);
+
+            var model = new ExerciseDetailsServiceModel
+            {
+                Name = exercise.Name,
+                ImageUrl = exercise.ImageUrl
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ExerciseDetailsServiceModel exercise)
+        {
+            if (!exerciseService.Exists(exercise.Id))
+            {
+                return BadRequest();
+            }
+            exerciseService.Delete(exercise.Id);
+            return RedirectToAction("Index", "Editor");
+        }
 
 
     }

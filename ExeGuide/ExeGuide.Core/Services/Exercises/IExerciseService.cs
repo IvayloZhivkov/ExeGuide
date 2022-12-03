@@ -37,5 +37,6 @@ namespace ExeGuide.Core.Services.Exercises
         bool EquipmentExists(int categoryId);
 
         int Create(string title, string description, string imgageUrl, int mainCategoryId, int subCategoryId, int equipmentId);
+        void Delete(int exerciseId);
     }
 }
