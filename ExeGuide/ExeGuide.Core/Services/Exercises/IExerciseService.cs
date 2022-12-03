@@ -21,7 +21,7 @@ namespace ExeGuide.Core.Services.Exercises
         IEnumerable<string> AllSubCategoriesNames();
         IEnumerable<string> AllEquipmentNames();
 
-        void AddToFav(int userId, int houseId);
+        void AddToFav(string userId, int exerciseId);
 
        IEnumerable<ExerciseServiceModel> AllExercisesById(string userId);
 

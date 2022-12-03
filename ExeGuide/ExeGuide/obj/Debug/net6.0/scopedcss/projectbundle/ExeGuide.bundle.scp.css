@@ -1,3 +1,80 @@
+/* _content/ExeGuide/Areas/Editor/Views/Shared/_EditorLayout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+#bcgrd-img[b-czd8x8fmjj] {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.OhMA7ZWLbXtWgPMLOyxPuwHaEH%26pid%3DApi&f=1&ipt=79869b2…&ipo=images);
+    margin-bottom: 50px;
+    background-repeat: no-repeat;
+    width: auto;
+    height: 600px;
+    background-size: cover;
+}
+
+a.navbar-brand[b-czd8x8fmjj] {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a[b-czd8x8fmjj] {
+    color: #85858670;
+}
+
+.btn-primary[b-czd8x8fmjj] {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-czd8x8fmjj], .nav-pills .show > .nav-link[b-czd8x8fmjj] {
+    color: rgba(47, 47, 47, 46%);
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.border-top[b-czd8x8fmjj] {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom[b-czd8x8fmjj] {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-czd8x8fmjj] {
+    box-shadow: 0 .25rem .75rem rgba(47, 47, 47, 46%)
+}
+
+
+
+button.accept-policy[b-czd8x8fmjj] {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer[b-czd8x8fmjj] {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+.vertLine[b-czd8x8fmjj] {
+    border-left: 2px solid #3e42474d;
+    height: 30pt;
+    position: initial;
+    left: 50%;
+}
 /* _content/ExeGuide/Views/Exercise/_ExercisesPartial.cshtml.rz.scp.css */
 .card-img[b-s3um238gta], .card-img-top[b-s3um238gta] {
     border-top-left-radius: calc(1.20rem - 1px);

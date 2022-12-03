@@ -113,13 +113,13 @@ namespace ExeGuide.Core.Services.Exercises
 
 
 
-        public void AddToFav(int userId, int exerciseId)
+        public void AddToFav(string userId, int exerciseId)
         {
             
             TrainingUsersExercise userExercises = new TrainingUsersExercise()
             {
                ExerciseId = exerciseId,
-              // UserId = userId
+               UserId = userId
             };
             if (!data.TrainingUsersExercises.Contains(userExercises))
             {

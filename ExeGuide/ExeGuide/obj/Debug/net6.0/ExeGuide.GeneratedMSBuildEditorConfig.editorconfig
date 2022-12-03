@@ -15,6 +15,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/Editor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXEVkaXRvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -62,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/Shared/_EditorLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXFNoYXJlZFxfRWRpdG9yTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-czd8x8fmjj
 
 [C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Views/Exercise/_ExercisesPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpc2VcX0V4ZXJjaXNlc1BhcnRpYWwuY3NodG1s

@@ -1,4 +1,6 @@
 
+using ExeGuide.Core.Services.Exercises;
+using ExeGuide.Core.Services.Users;
 using ExeGuide.DataBase.Data;
 using ExeGuide.DataBase.Infrastructure;
 using Microsoft.AspNetCore.Identity;
@@ -24,6 +26,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddEntityFrameworkStores<ExeGuideDbContext>();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IExerciseService, ExerciseService>();
+builder.Services.AddTransient<IUserService, UserService>();
+
 
 var app = builder.Build();
 
@@ -47,9 +52,25 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "default",
+      pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Editor}/{action=Index}/{id?}"
+    );
+
+    endpoints.MapControllerRoute(
+      name: "exerciseDescription",
+      pattern: "Exercise/Description/{id}/{information}"
+    );
+
+    endpoints.MapRazorPages();
+});
 app.MapRazorPages();
 
 app.Run();

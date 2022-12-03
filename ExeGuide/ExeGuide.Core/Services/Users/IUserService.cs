@@ -13,5 +13,6 @@ namespace ExeGuide.Core.Services.Users
        
 
         void AddNewUser(TrainingUser user);
+    
     }
 }

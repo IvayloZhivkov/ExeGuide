@@ -1,27 +1,32 @@
-﻿using ExeGuide.Models;
+﻿using ExeGuide.Core.Models;
+using ExeGuide.Core.Services.Exercises;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+
+using static ExeGuide.Areas.Editor.Constants.EditorConstants;
 
 namespace ExeGuide.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        public readonly IExerciseService data;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IExerciseService _data)
         {
-            _logger = logger;
+            this.data = _data;
         }
-
         public IActionResult Index()
         {
-            return View();
+            if (User.IsInRole(EditorRolleName))
+            {
+                return RedirectToAction("Index", "Editor", new { area = "Editor" });
+            }
+
+            var exercises = data.AllShowingSlide();
+            return View(exercises);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
