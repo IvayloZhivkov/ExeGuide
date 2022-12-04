@@ -26,14 +26,13 @@
             @if (this.User.IsInRole(EditorRolleName))
             {
                 <div>
-
+                    <a asp-area="Editor" asp-controller="Exercise" asp-action="Edit" asp-route-id="@Model.Id"
+                   class="btn btn-danger" style="margin-top: 10px;margin-bottom: 10px;}">Edit</a>
+                </div>
+                <div>
                     <a asp-area="Editor" asp-controller="Exercise" asp-action="Delete" asp-route-id="@Model.Id"
                    class="btn btn-danger">Delete</a>
                 </div>
-                <div>
-                <a asp-area="Editor" asp-controller="Exercise" asp-action="Edit" asp-route-id="@Model.Id"
-               class="btn btn-danger">Edit</a>
-               </div>
             }
         </div>
     </div>
