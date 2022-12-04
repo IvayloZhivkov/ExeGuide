@@ -213,10 +213,10 @@ namespace ExeGuide.Core.Services.Exercises
             data.SaveChanges();
         }
 
-        public int MainCategoryId(int categoryId) => data.MainCategories.FirstOrDefault(m => m.Id == categoryId).Id;
+        public int MainCategoryId(int categoryId) => data.Exercises.Find(categoryId).MainCategoryId;
 
-        public int SubCategoryId(int categoryId) => data.SubCategories.FirstOrDefault(s => s.Id == categoryId).Id;
+        public int SubCategoryId(int categoryId) => data.Exercises.Find(categoryId).MainCategoryId;
 
-        public int EquipmentId(int categoryId) => data.Equipments.FirstOrDefault(e => e.Id == categoryId).Id;
+        public int EquipmentId(int categoryId) => data.Exercises.Find(categoryId).EquipmentId;
     }
 }
