@@ -8,6 +8,7 @@ using ExeGuide.Areas.Editor.Models;
 using ExeGuide.DataBase.Infrastructure;
 using static ExeGuide.DataBase.Data.Constants.EditorConstants;
 using ExeGuide.Core.Services.Exercises.Models;
+using System.Reflection.Metadata;
 
 namespace TrainingHelper.Areas.Editor.Controllers
 {
@@ -133,6 +134,73 @@ namespace TrainingHelper.Areas.Editor.Controllers
             }
             exerciseService.Delete(exercise.Id);
             return RedirectToAction("Index", "Editor");
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            if (!exerciseService.Exists(id))
+            {
+                return BadRequest();
+
+            }
+
+            var exercise = exerciseService.ExerciseDetailsById(id);
+
+            var mainCategory = exerciseService.MainCategoryId(exercise.Id);
+            var subCategory = exerciseService.SubCategoryId(exercise.Id);
+            var equipment = exerciseService.EquipmentId(exercise.Id);
+
+            var houseModel = new ExerciseFormModel()
+            {
+                Name = exercise.Name,
+                Description = exercise.Description,
+                ImageUrl = exercise.ImageUrl,
+                MainCategoryId = mainCategory,
+                MainCategories = exerciseService.AllMainCategories(),
+                SubCategoryId = subCategory,
+                SubCategories = exerciseService.AllSubCategories(),
+                EquipmentId = equipment,
+                Equipments = exerciseService.AllEquipments()
+            };
+            return View(houseModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Edit(int id, ExerciseFormModel exercise)
+        {
+            if (!exerciseService.Exists(id))
+            {
+                return View();
+
+            }
+            if (!exerciseService.MainCategoryExists(exercise.MainCategoryId))
+            {
+                ModelState.AddModelError(nameof(exercise.MainCategoryId), "Main category does not exist!");
+            }
+            if (!exerciseService.SubCategoryExists(exercise.SubCategoryId))
+            {
+                ModelState.AddModelError(nameof(exercise.SubCategoryId), "Subcategory does not exist!");
+            }
+            if (!exerciseService.EquipmentExists(exercise.EquipmentId))
+            {
+                ModelState.AddModelError(nameof(exercise.EquipmentId), "Equipment does not exist!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                exercise.MainCategories = exerciseService.AllMainCategories();
+                exercise.SubCategories = exerciseService.AllSubCategories();
+                exercise.Equipments = exerciseService.AllEquipments();
+
+                return View(exercise);
+            }
+            exerciseService.Edit(id, exercise.Name, exercise.Description, exercise.ImageUrl, exercise.MainCategoryId, exercise.SubCategoryId, exercise.EquipmentId);
+
+            return RedirectToAction(nameof(Details), new { id = id });
         }
 
 

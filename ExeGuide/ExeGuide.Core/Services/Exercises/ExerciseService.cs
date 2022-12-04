@@ -188,6 +188,22 @@ namespace ExeGuide.Core.Services.Exercises
 
             return ex.Id;
         }
+        public void Edit(int exerciseId,string title, string description, string imgageUrl, int mainCategoryId, int subCategoryId, int equipmentId)
+        {
+            var exercise = data.Exercises.Find(exerciseId);
+
+            exercise.Name = title;
+            exercise.Description = description;
+            exercise.ImageUrl = imgageUrl;
+            exercise.MainCategoryId = mainCategoryId;
+            exercise.SubCategoryId = subCategoryId;
+            exercise.EquipmentId = equipmentId;
+
+            this.data.SaveChanges();
+
+            
+        }
+
 
         public void Delete(int exerciseId)
         {
@@ -196,5 +212,11 @@ namespace ExeGuide.Core.Services.Exercises
             data.Remove(exerecise);
             data.SaveChanges();
         }
+
+        public int MainCategoryId(int categoryId) => data.MainCategories.FirstOrDefault(m => m.Id == categoryId).Id;
+
+        public int SubCategoryId(int categoryId) => data.SubCategories.FirstOrDefault(s => s.Id == categoryId).Id;
+
+        public int EquipmentId(int categoryId) => data.Equipments.FirstOrDefault(e => e.Id == categoryId).Id;
     }
 }

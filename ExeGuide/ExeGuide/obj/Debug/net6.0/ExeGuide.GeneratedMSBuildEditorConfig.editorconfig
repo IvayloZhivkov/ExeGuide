@@ -31,6 +31,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXEV4ZXJjaXNlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/Exercise/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXEV4ZXJjaXNlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/Exercise/_ExerciseFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXEV4ZXJjaXNlXF9FeGVyY2lzZUZvcm1QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
