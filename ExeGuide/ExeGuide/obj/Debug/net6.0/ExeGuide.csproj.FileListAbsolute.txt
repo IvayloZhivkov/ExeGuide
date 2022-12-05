@@ -146,4 +146,3 @@ C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\bin\Debug\net6.0\ExeGuide.Core.dll
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\bin\Debug\net6.0\ExeGuide.Core.pdb
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\obj\Debug\net6.0\scopedcss\Views\Exercise\_ExercisesPartial.cshtml.rz.scp.css
 C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\obj\Debug\net6.0\scopedcss\Areas\Editor\Views\Shared\_EditorLayout.cshtml.rz.scp.css
-C:\ExeGuide\ExeGuide\ExeGuide\ExeGuide\bin\Debug\net6.0\Views\Exercise\json.json

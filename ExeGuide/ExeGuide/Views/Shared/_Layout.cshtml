@@ -9,63 +9,63 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TrainingHelper.styles.css" asp-append-version="true" />
 </head>
-<body style="  background-image: url(https://wallpapercave.com/wp/wp2639566.jpg);background-color:black;
+<body style="background-image: url(https://wallpapercave.com/wp/wp3173151.jpg);background-color:black;
     margin-bottom: 50px;
     background-repeat: no-repeat;
     width: auto;
     height: 600px;
     background-size: cover;">
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:lightgray">
-                <div class="container-fluid" style="background-color: lightgray">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ExeGuide</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:lightgray">
+            <div class="container-fluid" style="background-color: lightgray">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ExeGuide</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <div class="vertLine"> </div>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="All">All Exercises</a>
+                        </li>
+
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
                             <div class="vertLine"> </div>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="All">All Exercises</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Mine">My Favourites</a>
                             </li>
-
-                            @if (this.User.Identity.IsAuthenticated)
-                            {
-                                <div class="vertLine"> </div>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Mine">My Favourites</a>
-                                </li>
-                            }
+                        }
                         @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole("Editing"))
                         {
-                                <div class="vertLine"> </div>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Add">Add Exercises</a>
-                                </li>
-                            }
+                            <div class="vertLine"> </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Add">Add Exercises</a>
+                            </li>
+                        }
 
-                        </ul>
-                        <partial name="_LoginPartial" />
-                    </div>
+                    </ul>
+                    <partial name="_LoginPartial" />
                 </div>
-            </nav>
-        </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2022 - TrainingHelper
             </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
-   
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" style="position: fixed;bottom: 0; width: 100%;height: 30px; border:none; background-color:dimgray" st>
+        <div class="container" style="color:lightgray">
+            2022 - TrainingHelper
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
