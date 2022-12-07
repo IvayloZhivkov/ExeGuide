@@ -1,6 +1,86 @@
 ﻿@model ExerciseServiceModel
 
-<div class="col-md-4">
+<div class="card">
+    <h2>@Model.Name</h2>
+
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="@Model.ImageUrl" style="width:360px">
+        </div>
+
+        <!-- Decorate card back side -->
+        <div class="card-back" style="width: 360px";>
+            <div>You can do it!</div>
+            <a asp-controller="Exercise" asp-action="Details" asp-route-id="@Model.Id"
+               class="btn btn-success" style="background-color:cornflowerblue; border-color:cornflowerblue;margin-left:10px ">More Details</a>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <div id="fav">
+                    <form class="pa-inline-buttons"
+                      style=" margin-left: 10px;
+                              margin-top: 20px;"
+                      asp-controller="Exercise"
+                      asp-action="Favourites" asp-route-id="@Model.Id">
+                        <input class="btn btn-primary" type="submit" value="Add To Favourites" />
+                    </form>
+                </div>
+            }
+            @if (this.User.IsInRole(EditorRolleName))
+            {
+                <div id="ed">
+                    <a asp-area="Editor" asp-controller="Exercise" asp-action="Edit" asp-route-id="@Model.Id"
+                   class="btn btn-danger" style="margin-top: 20px;margin-left:10px">Edit</a>
+                </div>
+                <div id="del">
+                    <a asp-area="Editor" asp-controller="Exercise" asp-action="Delete" asp-route-id="@Model.Id"
+                   class="btn btn-danger" style="margin-top: 20px;margin-left:10px">Delete</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .card {
+        width: 400px;
+        height: 350px;
+        perspective: 1000px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    .card-inner {
+        position: relative;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .card:hover .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+@*<div class="col-md-4">
     <div class="card mb-3" style="border-color:black">
         <img class="card-img-top" src="@Model.ImageUrl" alt="Exercise Image">
         <div class="card-body text-center">
@@ -36,9 +116,9 @@
             }
         </div>
     </div>
-    
-</div>
 
+</div>
+*@
 
 <style>
     .card:hover {
@@ -47,4 +127,3 @@
 
 </style>
 
-  

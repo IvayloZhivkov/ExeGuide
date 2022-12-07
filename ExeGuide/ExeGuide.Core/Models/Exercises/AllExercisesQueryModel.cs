@@ -6,7 +6,7 @@ namespace ExeGuide.Core.Models.Exercises
 {
     public class AllExercisesQueryModel
     {
-        public const int ExercisesPerPage = 6;
+        public const int ExercisesPerPage = 9;
          
         public string MainCategoryName { get; set; }
         public string SubCategoryName { get; set; }
