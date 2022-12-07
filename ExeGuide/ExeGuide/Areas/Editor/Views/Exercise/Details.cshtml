@@ -6,24 +6,75 @@
 
 <h2 class="text-center" style="color:white">@ViewBag.Title</h2>
 <hr />
-<div class="container" style="display:inline">
-    <div class="row">
+<div class="main-container">
+    <div class="second-container">
+        <div class="exercise-name">@Model.Name</div>
+        <div class="image-and-text-container">
+            <div clas="flex" style="display:flex">
 
-        <div class="col-4">
-            <img class="card-img-top" style="width: 45rem;"
-                 src="@Model.ImageUrl" alt="Exercise Image">
+                <img id="image" src="@Model.ImageUrl" alt="image">
+                <div class="right-middle-container">
+                    <div id="description"> @Model.Description</div>
+                    <div class="categories">
+                        <div id="main-categoty">MAIN MUSCLE CATEGOTY: @Model.MainCategory</div>
+                        <div id="sub-categoty">MUSCLE SUB CATEGOTY: @Model.SubCategory</div>
+                        <div id="equipment-categoty">EQUIPMENT USED: @Model.Equipment</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div>
-
-        </div>
-        <div class="card col-8 border-0">
-            <p style="font-size:25px;"><u>@Model.Name</u></p>
-            <p>@Model.Description</p>
-            <p>Main Muscle Group: <b>@Model.MainCategory</b></p>
-            <p>Specificated Muscle Targeted: <b>@Model.SubCategory</b></p>
-            <p>Equipment Used: <b>@Model.Equipment</b></p>
-        </div>
-
-
     </div>
+
 </div>
+<style>
+
+
+    .title-text {
+        text-align: center;
+        color: white;
+        font-size: 50px;
+    }
+
+    .exercise-name {
+        text-align: center;
+        color: white;
+        font-size: 40px;
+        margin-top: 50px;
+    }
+
+    #image {
+        width: 700px;
+        height: 500px;
+        background-color: green;
+        object-position: bottom left;
+        margin-bottom: 40px;
+    }
+
+    .right-middle-container {
+        background-color: dimgray;
+        margin-bottom: 40px;
+    }
+
+    #description {
+        font-size: 20px;
+        margin-left: 20px;
+        color: white;
+    }
+
+    .categories {
+        margin-top: 30px;
+        margin-left: 20px;
+        font-weight: bold;
+        color: white;
+    }
+
+    #sub-categoty {
+        margin-top: 10px;
+    }
+
+    #equipment-categoty {
+        margin-top: 10px;
+    }
+
+</style>

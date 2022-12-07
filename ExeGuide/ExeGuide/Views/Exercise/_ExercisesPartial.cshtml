@@ -5,11 +5,11 @@
 
     <div class="card-inner">
         <div class="card-front">
-            <img src="@Model.ImageUrl" style="width:360px">
+            <img src="@Model.ImageUrl" style="width:360px; max-height:260px">
         </div>
 
         <!-- Decorate card back side -->
-        <div class="card-back" style="width: 360px";>
+        <div class="card-back" style="width: 360px;" ;>
             <div>You can do it!</div>
             <a asp-controller="Exercise" asp-action="Details" asp-route-id="@Model.Id"
                class="btn btn-success" style="background-color:cornflowerblue; border-color:cornflowerblue;margin-left:10px ">More Details</a>
