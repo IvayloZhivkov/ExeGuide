@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Whatcha doin'?";
+
+}
+
+<div class="main-container">
+    <div class="sub-container">
+        <div class="image-box">
+            <img style="width:550px; position:initial " src="https://cdn.vox-cdn.com/thumbor/iJdzJEbO0Uy_EFh680yd9s7njwg=/0x529:1267x1374/1200x800/filters:focal(0x529:1267x1374)/cdn.vox-cdn.com/uploads/chorus_image/image/49580341/h1.0.0.jpg" alt="center image">
+            <div>
+                <h3 style="font-size:20px;" clas="text">Whatcha doin'?</h3>
+            </div>
+            <a style="font-size: 30px; cursor: pointer; " asp-controller="Exercie" asp-action="All">Go back.</a>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .sub-container {
+        background-color: grey;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-left: 300px;
+        padding-right: 300px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .image-box {
+        width: 550px;
+        position: initial;
+    }
+
+</style>

@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExeGuide.Core", "ExeGuide.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExeGuide.DataBase", "ExeGuide.DataBase\ExeGuide.DataBase.csproj", "{264B330F-ADA5-4517-B6B6-7909F6059CAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExeGuide.UnitTests", "ExeGuide.UnitTests\ExeGuide.UnitTests.csproj", "{2ED714DA-963A-4B1C-B1E0-FA01500C37F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{264B330F-ADA5-4517-B6B6-7909F6059CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{264B330F-ADA5-4517-B6B6-7909F6059CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{264B330F-ADA5-4517-B6B6-7909F6059CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ED714DA-963A-4B1C-B1E0-FA01500C37F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ED714DA-963A-4B1C-B1E0-FA01500C37F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ED714DA-963A-4B1C-B1E0-FA01500C37F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ED714DA-963A-4B1C-B1E0-FA01500C37F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

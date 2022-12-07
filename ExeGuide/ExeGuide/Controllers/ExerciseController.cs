@@ -59,13 +59,14 @@ namespace ExeGuide.Controllers
             return View(exerciseModel);
         }
 
+        [Authorize]
         public IActionResult Add()
         {
             if (User.IsInRole(EditorRolleName))
             {
                 return RedirectToAction("Add", "Exercise", new { area = AreaName });
             }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
 

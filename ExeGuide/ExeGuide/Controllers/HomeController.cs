@@ -22,16 +22,9 @@ namespace ExeGuide.Controllers
             {
                 return RedirectToAction("Index", "Editor", new { area = "Editor" });
             }
-
-            var exercises = data.AllShowingSlide();
-            return View(exercises);
+            return View();
         }
 
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
