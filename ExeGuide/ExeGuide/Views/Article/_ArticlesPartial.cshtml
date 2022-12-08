@@ -19,13 +19,19 @@
 
 <style>
     .main-article-container {
+        width: 1400px;
         margin-left: 30px;
-        margin-right: 30px;
+        margin-right: 60px;
         border-radius: 10px;
         padding-bottom: 10px;
-        margin-bottom:15px;
-        background-color: rgb(181, 167, 167);
+        margin-bottom:20px;
+        background-color: rgb(171, 218, 235);
+        transition: 0.3s;
     }
+
+        .main-article-container:hover {
+            box-shadow: 0px 0px 20px #eee0e0;
+        }
 
     .title-container {
         text-align: center;
@@ -37,21 +43,30 @@
         padding-top: 10px;
     }
 
-  
-
     .main-article-container {
         object-position: center;
     }
 
     #image {
-        max-width: 600px;
-        margin-left: 15px;
+        width: 600px;
+        margin-left: 25px;
         border-radius: 10px;
+        transition: 0.3s;
+    }
+
+        #image:hover {
+            box-shadow: 0px 0px 15px #e8bb52;
+        }
+
+    .text-container {
+        text-align: center;
+        padding-right: 90px;
     }
 
     #article-text {
-        max-width: 700px;
+        max-width: 600px;
         font-size: 24px;
         margin-left: 40px;
+        padding-right: 30px;
     }
 </style>
