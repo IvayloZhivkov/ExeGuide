@@ -49,7 +49,7 @@ namespace ExeGuide.DataBase.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Article");
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.ArticleCategory", b =>
@@ -66,7 +66,7 @@ namespace ExeGuide.DataBase.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ArticleCategory");
+                    b.ToTable("ArticleCategories");
 
                     b.HasData(
                         new
@@ -659,15 +659,15 @@ namespace ExeGuide.DataBase.Data.Migrations
                         {
                             Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "254d77c7-c9aa-4a3c-904b-ca4bbc74597b",
+                            ConcurrencyStamp = "f686f65d-2310-4d74-9600-b80f9d8d34d6",
                             Email = "editor@traininghelper.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "editor@traininghelper.com",
                             NormalizedUserName = "editor@traininghelper.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMlto8HKwMfYG33iCV6NOoQxL08Qk8ASSBvgh0JEevl2+feki/f8zztO7SPMWKkXwA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM7aLVTHAvPKIWJCRZtNr3FrLRjdADsH3VOYTwTTIffGZJWLVVRl05f4evw70u/dEg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "71382be4-30c9-4217-a9ee-e6e695514d72",
+                            SecurityStamp = "24f484cc-185b-43a0-8d74-996dc7a507c5",
                             TwoFactorEnabled = false,
                             UserName = "editor@traininghelper.com"
                         },
@@ -675,15 +675,15 @@ namespace ExeGuide.DataBase.Data.Migrations
                         {
                             Id = "e4885526-b62d-4ba4-9b84-1ae80535863a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c0db3a05-2ae1-47ea-96fc-854a6cdca728",
+                            ConcurrencyStamp = "3b52cf60-194b-4101-a167-28b429997282",
                             Email = "writer@exeguide.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "writer@exeguide.com",
                             NormalizedUserName = "writer@exeguide.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG8A5Eqk/82g8Xt6tPsCzoqgaA/IsPtvbwBPyhzWWcZKAwnd0OkRUdMu4r3hN9P5qg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEmcyH7yRocRGm3xXKAkiQwjg97/GHvy8mcf/ur9oBv1nvKc9koqPJDAGRA2YitXHA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a15dc462-9fee-42f0-bdc2-7679af92ea95",
+                            SecurityStamp = "2332399f-745a-45a2-b599-9b970a46a534",
                             TwoFactorEnabled = false,
                             UserName = "writer@exeguide.com"
                         });

@@ -51,6 +51,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Writer/Views/Writer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcV3JpdGVyXFZpZXdzXFdyaXRlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Writer/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcV3JpdGVyXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Writer/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcV3JpdGVyXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Views/Article/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxBbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Views/Article/_ArticlesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxfQXJ0aWNsZXNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Views/Error/Erro401.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcRXJybzQwMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -114,6 +134,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Editor/Views/Shared/_EditorLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRWRpdG9yXFZpZXdzXFNoYXJlZFxfRWRpdG9yTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-czd8x8fmjj
+
+[C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Areas/Writer/Views/Shared/_WriterLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcV3JpdGVyXFZpZXdzXFNoYXJlZFxfV3JpdGVyTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-7nn8kf8xlv
 
 [C:/ExeGuide/ExeGuide/ExeGuide/ExeGuide/Views/Exercise/_ExercisesPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpc2VcX0V4ZXJjaXNlc1BhcnRpYWwuY3NodG1s

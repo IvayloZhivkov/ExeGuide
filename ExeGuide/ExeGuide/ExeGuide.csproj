@@ -29,9 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Writer\Data\" />
-    <Folder Include="Areas\Writer\Models\" />
-    <Folder Include="Areas\Writer\Views\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

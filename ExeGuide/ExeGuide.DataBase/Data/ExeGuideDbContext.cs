@@ -95,6 +95,8 @@ namespace ExeGuide.DataBase.Data
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
 
-        public DbSet<TrainingUsersExercise> TrainingUsersExercises { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleCategory> ArticleCategories { get; set; }
+         public DbSet<TrainingUsersExercise> TrainingUsersExercises { get; set; }
     }
 }

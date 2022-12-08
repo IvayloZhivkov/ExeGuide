@@ -1,0 +1,60 @@
+﻿@model ArticleServiceModel
+
+<div class="main-article-container">
+    <div class="title-container">
+        <h1 id="title">@Model.Title</h1>
+    </div>
+    <div class="category">
+        <p>Category: @Model.Category</p>
+    </div>
+    <div class="article-container" style="display:flex; flex-wrap: wrap;">
+        <div>
+            <img id="image" src="@Model.ImageUrl" alt="image">
+        </div>
+        <div class="text-container">
+            <p id="article-text">
+               @Model.ArticleText
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-article-container {
+        margin-left: 30px;
+        margin-right: 30px;
+        border-radius: 10px;
+        padding-bottom: 10px;
+        background-color: rgb(181, 167, 167);
+    }
+
+    .title-container {
+        text-align: center;
+        object-position: center;
+    }
+
+    #title {
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    .category {
+        margin-left: 15px;
+    }
+
+    .main-article-container {
+        object-position: center;
+    }
+
+    #image {
+        max-width: 600px;
+        margin-left: 15px;
+        border-radius: 10px;
+    }
+
+    #article-text {
+        max-width: 700px;
+        font-size: 24px;
+        margin-left: 40px;
+    }
+</style>

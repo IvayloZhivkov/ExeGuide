@@ -1,4 +1,5 @@
 
+using ExeGuide.Core.Services.Articles;
 using ExeGuide.Core.Services.Exercises;
 using ExeGuide.Core.Services.Users;
 using ExeGuide.DataBase.Data;
@@ -29,6 +30,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IExerciseService, ExerciseService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IArticleService, ArticleService>();
 
 
 var app = builder.Build();

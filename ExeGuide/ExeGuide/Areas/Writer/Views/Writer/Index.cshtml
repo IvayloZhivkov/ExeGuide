@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="mt-4 p-5 bg-light text-center">
+    <h2 class="display-4">Hello, Writer!</h2>
+    <p class="lead mb-1 mt-3">
+        This is your writing area - you can <b>create articles</b>, <b>edit them</b> and
+        <b>delete them </b>.
+    </p>
+   
+    <hr class="my-4">
+    <span>  |   </span>
+    <a asp-area="" asp-controller="Exercise" asp-action="All"
+       class="btn btn-primary btn-lg">All Exercises</a>
+    <span>  |   </span>
+    <a asp-area="Admin" asp-controller="Article" asp-action="Add"
+       class="btn btn-primary btn-lg">Add Article</a>
+    <span>  |   </span>
+   
+</div>
