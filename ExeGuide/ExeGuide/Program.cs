@@ -2,6 +2,7 @@
 using ExeGuide.Core.Services.Exercises;
 using ExeGuide.Core.Services.Users;
 using ExeGuide.DataBase.Data;
+using ExeGuide.DataBase.Data.Entities;
 using ExeGuide.DataBase.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -43,8 +44,12 @@ else
     app.UseStatusCodePagesWithRedirects("/Error/Error?statusCode={0}");
     app.UseHsts();
 }
-app.SeedRolle();
+//Seeding the roles and users with roles
+app.SeedEditorRole();
 app.SeedEditor();
+app.SeedWriterRole();
+app.SeedWriter();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -64,6 +69,10 @@ app.UseEndpoints(endpoints =>
       name: "areas",
       pattern: "{area:exists}/{controller=Editor}/{action=Index}/{id?}"
     );
+    endpoints.MapControllerRoute(
+           name: "areas",
+           pattern: "{area:exists}/{controller=Writer}/{action=Index}/{id?}"
+         );
 
     endpoints.MapControllerRoute(
       name: "exerciseDescription",

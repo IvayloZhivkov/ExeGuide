@@ -10,7 +10,7 @@ using static ExeGuide.DataBase.Data.Constants.EditorConstants;
 using ExeGuide.Core.Services.Exercises.Models;
 using System.Reflection.Metadata;
 
-namespace TrainingHelper.Areas.Editor.Controllers
+namespace ExeGuide.Areas.Editor.Controllers
 {
     public class ExerciseController : EditorController
     {

@@ -1,6 +1,7 @@
 ﻿using ExeGuide.DataBase.Data.Configurations;
 using ExeGuide.DataBase.Data.Entities;
 using static ExeGuide.DataBase.Data.Constants.EditorConstants;
+using static ExeGuide.DataBase.Data.Constants.WriterConstants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ namespace ExeGuide.DataBase.Data
     public class ExeGuideDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
     {
         private TrainingUser Editor { get; set; }
+        private TrainingUser Writer { get; set; }
 
         
         public ExeGuideDbContext(DbContextOptions<ExeGuideDbContext> options)
@@ -24,6 +26,7 @@ namespace ExeGuide.DataBase.Data
             builder.ApplyConfiguration(new EquipmentConfiguration());
             builder.ApplyConfiguration(new MainCategoryConfiguration());
             builder.ApplyConfiguration(new SubCategoryConfiguration());
+            builder.ApplyConfiguration(new ArticleCategoryConfiguration());
             
             builder.Entity<Exercise>()
                  .HasOne(e => e.Equipment)
@@ -43,6 +46,12 @@ namespace ExeGuide.DataBase.Data
                 .HasForeignKey(e => e.SubCategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<Article>()
+                .HasOne(a => a.ArticleCategory)
+                .WithMany(a => a.Article)
+                .HasForeignKey(a => a.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.Entity<TrainingUsersExercise>()
                  .HasKey(e => new { e.ExerciseId, e.UserId });
             builder.Entity<TrainingUsersExercise>()
@@ -54,11 +63,14 @@ namespace ExeGuide.DataBase.Data
                .WithMany(e => e.TrainingUsersExercises)
                .HasForeignKey(e => e.UserId);
 
-            //The EDITOR rolle password is = admin123
+            //The EDITOR role password is = admin123
             SeedEditor();
-            builder.Entity<TrainingUser>()
+            SeedWriter();
+            builder.Entity<IdentityUser>()
                 .HasData(this.Editor);
-           
+            //the WRITER role password is = writer123
+            builder.Entity<IdentityUser>()
+                .HasData(this.Writer);
 
             base.OnModelCreating(builder);
         }
@@ -67,8 +79,15 @@ namespace ExeGuide.DataBase.Data
         {
             var guid = Guid.NewGuid().ToString("D");
             var hasher = new PasswordHasher<TrainingUser>();
-            this.Editor = new TrainingUser() { Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4", Email = EditorEmail, NormalizedEmail = EditorEmail, UserName = EditorEmail, NormalizedUserName = EditorEmail, FirstName = "Great", LastName = "Editor",SecurityStamp = guid };
+            this.Editor = new TrainingUser() { Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4", Email = EditorEmail, NormalizedEmail = EditorEmail, UserName = EditorEmail, NormalizedUserName = EditorEmail, FirstName = "Great", LastName="Editor", SecurityStamp = guid };
             this.Editor.PasswordHash = hasher.HashPassword(this.Editor, "admin123");
+        }
+        private void SeedWriter()
+        {
+            var guid = Guid.NewGuid().ToString("D");
+            var hasher = new PasswordHasher<TrainingUser>();
+            this.Writer = new TrainingUser() { Id = "e4885526-b62d-4ba4-9b84-1ae80535863a", Email = WriterEmail, NormalizedEmail = WriterEmail, UserName = WriterEmail, NormalizedUserName = WriterEmail, FirstName = "Great", LastName = "Writer", SecurityStamp = guid };
+            this.Writer.PasswordHash = hasher.HashPassword(this.Writer, "writer123");
         }
 
         public DbSet<Equipment> Equipments { get; set; }

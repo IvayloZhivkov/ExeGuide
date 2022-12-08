@@ -17,12 +17,86 @@ namespace ExeGuide.DataBase.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
+                .HasAnnotation("ProductVersion", "6.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.Equipment", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.Article", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ArticleText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Article");
+                });
+
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.ArticleCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ArticleCategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ArticleCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ArticleCategoryName = "Food and Health"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ArticleCategoryName = "People"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArticleCategoryName = "Competitions"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ArticleCategoryName = "Bodybuilding"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ArticleCategoryName = "Workout Plans"
+                        });
+                });
+
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.Equipment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,7 +151,7 @@ namespace ExeGuide.DataBase.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.Exercise", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.Exercise", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -161,7 +235,7 @@ namespace ExeGuide.DataBase.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.MainCategory", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.MainCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -211,7 +285,7 @@ namespace ExeGuide.DataBase.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.SubCategory", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.SubCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -391,7 +465,7 @@ namespace ExeGuide.DataBase.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.TrainingUser", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.TrainingUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -400,12 +474,10 @@ namespace ExeGuide.DataBase.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -423,12 +495,10 @@ namespace ExeGuide.DataBase.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -446,43 +516,14 @@ namespace ExeGuide.DataBase.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "ce32d03e-3305-4230-bc82-3359764621d4",
-                            Email = "editor@traininghelper.com",
-                            EmailConfirmed = false,
-                            FirstName = "Great",
-                            LastName = "Editor",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "editor@traininghelper.com",
-                            NormalizedUserName = "editor@traininghelper.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOna8YEI7JKjmjIE53sMXbkzIyx43cSdg9VXTf8ZzYhHbPxPKukOaP1N6ulhbGDETw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "46804bdc-f5f4-4bfe-aea3-61565b9456ea",
-                            TwoFactorEnabled = false,
-                            UserName = "editor@traininghelper.com"
-                        });
+                    b.ToTable("TrainingUser");
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.TrainingUsersExercise", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.TrainingUsersExercise", b =>
                 {
                     b.Property<int>("ExerciseId")
                         .HasColumnType("int");
@@ -547,6 +588,105 @@ namespace ExeGuide.DataBase.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "254d77c7-c9aa-4a3c-904b-ca4bbc74597b",
+                            Email = "editor@traininghelper.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "editor@traininghelper.com",
+                            NormalizedUserName = "editor@traininghelper.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMlto8HKwMfYG33iCV6NOoQxL08Qk8ASSBvgh0JEevl2+feki/f8zztO7SPMWKkXwA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "71382be4-30c9-4217-a9ee-e6e695514d72",
+                            TwoFactorEnabled = false,
+                            UserName = "editor@traininghelper.com"
+                        },
+                        new
+                        {
+                            Id = "e4885526-b62d-4ba4-9b84-1ae80535863a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c0db3a05-2ae1-47ea-96fc-854a6cdca728",
+                            Email = "writer@exeguide.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "writer@exeguide.com",
+                            NormalizedUserName = "writer@exeguide.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG8A5Eqk/82g8Xt6tPsCzoqgaA/IsPtvbwBPyhzWWcZKAwnd0OkRUdMu4r3hN9P5qg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a15dc462-9fee-42f0-bdc2-7679af92ea95",
+                            TwoFactorEnabled = false,
+                            UserName = "writer@exeguide.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -634,21 +774,32 @@ namespace ExeGuide.DataBase.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.Exercise", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.Article", b =>
                 {
-                    b.HasOne("ExeGuide.Data.Entities.Equipment", "Equipment")
+                    b.HasOne("ExeGuide.DataBase.Data.Entities.ArticleCategory", "ArticleCategory")
+                        .WithMany("Article")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ArticleCategory");
+                });
+
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.Exercise", b =>
+                {
+                    b.HasOne("ExeGuide.DataBase.Data.Entities.Equipment", "Equipment")
                         .WithMany("Exercises")
                         .HasForeignKey("EquipmentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ExeGuide.Data.Entities.MainCategory", "MainCategory")
+                    b.HasOne("ExeGuide.DataBase.Data.Entities.MainCategory", "MainCategory")
                         .WithMany("Exercises")
                         .HasForeignKey("MainCategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ExeGuide.Data.Entities.SubCategory", "SubCategory")
+                    b.HasOne("ExeGuide.DataBase.Data.Entities.SubCategory", "SubCategory")
                         .WithMany("Exercises")
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -661,15 +812,15 @@ namespace ExeGuide.DataBase.Data.Migrations
                     b.Navigation("SubCategory");
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.TrainingUsersExercise", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.TrainingUsersExercise", b =>
                 {
-                    b.HasOne("ExeGuide.Data.Entities.Exercise", "Exercise")
+                    b.HasOne("ExeGuide.DataBase.Data.Entities.Exercise", "Exercise")
                         .WithMany("TrainingUsersExercises")
                         .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ExeGuide.Data.Entities.TrainingUser", "TrainingUser")
+                    b.HasOne("ExeGuide.DataBase.Data.Entities.TrainingUser", "TrainingUser")
                         .WithMany("TrainingUsersExercises")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -691,7 +842,7 @@ namespace ExeGuide.DataBase.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ExeGuide.Data.Entities.TrainingUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -700,7 +851,7 @@ namespace ExeGuide.DataBase.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ExeGuide.Data.Entities.TrainingUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -715,7 +866,7 @@ namespace ExeGuide.DataBase.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ExeGuide.Data.Entities.TrainingUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -724,34 +875,39 @@ namespace ExeGuide.DataBase.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ExeGuide.Data.Entities.TrainingUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.Equipment", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.ArticleCategory", b =>
+                {
+                    b.Navigation("Article");
+                });
+
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.Equipment", b =>
                 {
                     b.Navigation("Exercises");
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.Exercise", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.Exercise", b =>
                 {
                     b.Navigation("TrainingUsersExercises");
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.MainCategory", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.MainCategory", b =>
                 {
                     b.Navigation("Exercises");
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.SubCategory", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.SubCategory", b =>
                 {
                     b.Navigation("Exercises");
                 });
 
-            modelBuilder.Entity("ExeGuide.Data.Entities.TrainingUser", b =>
+            modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.TrainingUser", b =>
                 {
                     b.Navigation("TrainingUsersExercises");
                 });
