@@ -1,4 +1,4 @@
-﻿namespace ExeGuide.Areas.Writer.Models
+﻿namespace ExeGuide.Core.Services.Models
 {
     public class ArticleCategoryModel
     {

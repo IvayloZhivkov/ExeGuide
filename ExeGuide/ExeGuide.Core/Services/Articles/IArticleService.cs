@@ -1,4 +1,6 @@
 ﻿using ExeGuide.Core.Services.Articles.Models;
+using ExeGuide.Core.Services.Models;
+using ExeGuide.DataBase.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,8 @@ namespace ExeGuide.Core.Services.Articles
         void Edit(int articleId, string title, string articleText, string imgageUrl, int category);
         void Delete(int articleId);
 
-      IEnumerable<string> AllCategoriesNames();
+        IEnumerable<string> AllCategoriesNames();
+        public IEnumerable<ArticleCategoryModel> AllCategories();
+        bool CategoryExists(int categoryId);
     }
 }

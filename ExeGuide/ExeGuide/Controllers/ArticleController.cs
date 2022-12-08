@@ -2,7 +2,9 @@
 using ExeGuide.Core.Models.Exercises;
 using ExeGuide.Core.Services.Articles;
 using ExeGuide.Core.Services.Exercises;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static ExeGuide.Areas.Writer.Constants.WriterConstants;
 
 namespace ExeGuide.Controllers
 {
@@ -31,6 +33,15 @@ namespace ExeGuide.Controllers
             query.Category = categoryName;
 
             return View(query);
+        }
+        [Authorize]
+        public IActionResult Add()
+        {
+            if (User.IsInRole(WriterRolleName))
+            {
+                return RedirectToAction("Add", "Article", new { area = AreaName });
+            }
+            return View();
         }
 
     }

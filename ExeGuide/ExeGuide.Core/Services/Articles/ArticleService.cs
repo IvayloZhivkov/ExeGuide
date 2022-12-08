@@ -1,5 +1,6 @@
 ﻿using ExeGuide.Core.Services.Articles.Models;
 using ExeGuide.Core.Services.Exercises.Models;
+using ExeGuide.Core.Services.Models;
 using ExeGuide.DataBase.Data;
 using ExeGuide.DataBase.Data.Entities;
 using System;
@@ -51,7 +52,19 @@ namespace ExeGuide.Core.Services.Articles
             };
         }
 
+        public IEnumerable<ArticleCategoryModel> AllCategories() =>
+            this.data
+            .ArticleCategories
+            .Select(c => new ArticleCategoryModel
+            {
+                Id = c.Id,
+                Name = c.ArticleCategoryName
+            })
+            .ToList();
+
         public IEnumerable<string> AllCategoriesNames()=> this.data.ArticleCategories.Select(c => c.ArticleCategoryName).Distinct().ToList();
+
+        public bool CategoryExists(int categoryId) => this.data.ArticleCategories.Any(c => c.Id == categoryId);
 
         public int Create(string title, string articleText, string imgageUrl, int category)
         {
