@@ -1,11 +1,9 @@
 ﻿@model ArticleServiceModel
 
+
 <div class="main-article-container">
     <div class="title-container">
         <h1 id="title">@Model.Title</h1>
-    </div>
-    <div class="category">
-        <p>Category: @Model.Category</p>
     </div>
     <div class="article-container" style="display:flex; flex-wrap: wrap;">
         <div>
@@ -25,6 +23,7 @@
         margin-right: 30px;
         border-radius: 10px;
         padding-bottom: 10px;
+        margin-bottom:15px;
         background-color: rgb(181, 167, 167);
     }
 
@@ -38,9 +37,7 @@
         padding-top: 10px;
     }
 
-    .category {
-        margin-left: 15px;
-    }
+  
 
     .main-article-container {
         object-position: center;

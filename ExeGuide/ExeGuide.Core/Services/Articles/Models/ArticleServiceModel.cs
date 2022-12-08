@@ -21,7 +21,6 @@ namespace ExeGuide.Core.Services.Articles.Models
         [Display(Name = "Image Url")]
         public string? ImageUrl { get; set; }
 
-        [Display(Name ="Category")]
-        public string Category { get; set; }
+        
     }
 }

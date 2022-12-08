@@ -33,7 +33,7 @@ namespace ExeGuide.Areas.Writer.Controllers
 
             if (!this.articleService.CategoryExists(model.CategoryId))
             {
-                this.ModelState.AddModelError(nameof(model.CategoryId), "Sategory does not exist");
+                this.ModelState.AddModelError(nameof(model.CategoryId), "Category does not exist");
             }
 
             if (!ModelState.IsValid)
@@ -45,7 +45,7 @@ namespace ExeGuide.Areas.Writer.Controllers
             }
             var newArticle = this.articleService.Create(model.Title, model.ArticleText, model.ImageUrl, model.CategoryId);
 
-            return RedirectToAction("All","Home");
+            return RedirectToAction("Index","Home");
         }
     }
 }
