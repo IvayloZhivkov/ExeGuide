@@ -5,7 +5,7 @@
 
     <div class="card-inner">
         <div class="card-front">
-            <img src="@Model.ImageUrl" style="width:360px; max-height:260px">
+            <img src="@Model.ImageUrl" style="width:360px; max-height:260px; margin-top: 30px;">
         </div>
 
         <!-- Decorate card back side -->
@@ -49,6 +49,7 @@
         margin-right: 20px;
         margin-bottom: 50px;
     }
+     
 
     .card-inner {
         position: relative;
@@ -57,7 +58,7 @@
         transform-style: preserve-3d;
     }
 
-    .card:hover .card-inner {
+    .card:hover .card-inner{
         transform: rotateY(180deg);
     }
 
@@ -80,50 +81,4 @@
 
 
 
-@*<div class="col-md-4">
-    <div class="card mb-3" style="border-color:black">
-        <img class="card-img-top" src="@Model.ImageUrl" alt="Exercise Image">
-        <div class="card-body text-center">
-            <h4>@Model.Name</h4>
-            <div>
-                <hr />
-            </div>
-            <div id="det">
-                <a asp-controller="Exercise" asp-action="Details" asp-route-id="@Model.Id"
-                   class="btn btn-success" style="background-color:cornflowerblue; border-color:cornflowerblue;margin-left:10px ">Exercise Details</a>
-            </div>
-            @if (this.User.Identity.IsAuthenticated)
-            {
-                <div id="fav">
-                    <form class="pa-inline-buttons"
-                      style="margin-left: 10px"
-                      asp-controller="Exercise"
-                      asp-action="Favourites" asp-route-id="@Model.Id">
-                        <input class="btn btn-primary" type="submit" value="Add To Favourites" />
-                    </form>
-                </div>
-            }
-            @if (this.User.IsInRole(EditorRolleName))
-            {
-                <div id="ed">
-                    <a asp-area="Editor" asp-controller="Exercise" asp-action="Edit" asp-route-id="@Model.Id"
-                   class="btn btn-danger" style="margin-top: 10px;margin-left:10px}">Edit</a>
-                </div>
-                <div id="del">
-                    <a asp-area="Editor" asp-controller="Exercise" asp-action="Delete" asp-route-id="@Model.Id"
-                   class="btn btn-danger">Delete</a>
-                </div>
-            }
-        </div>
-    </div>
-
-</div>
-*@
-
-<style>
-    .card:hover {
-        box-shadow: -1px 9px 40px 12px #808080
-    }
-
-</style>
 
