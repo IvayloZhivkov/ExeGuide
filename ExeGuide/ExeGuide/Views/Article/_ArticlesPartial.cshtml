@@ -11,9 +11,16 @@
         </div>
         <div class="text-container">
             <p id="article-text">
-               @Model.ArticleText
+                @Model.ArticleText
             </p>
         </div>
+        @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole("Writer"))
+        {
+            <div id="del">
+                <a asp-area="Writer" asp-controller="Article" asp-action="Delete" asp-route-id="@Model.Id"
+               class="btn btn-danger" style="margin-top: 20px;margin-left:10px">Delete Article</a>
+            </div>
+        }
     </div>
 </div>
 
@@ -24,7 +31,7 @@
         margin-right: 60px;
         border-radius: 10px;
         padding-bottom: 10px;
-        margin-bottom:20px;
+        margin-bottom: 20px;
         background-color: rgb(171, 218, 235);
         transition: 0.3s;
     }

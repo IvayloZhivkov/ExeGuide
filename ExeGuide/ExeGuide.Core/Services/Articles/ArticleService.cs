@@ -64,7 +64,17 @@ namespace ExeGuide.Core.Services.Articles
 
         public IEnumerable<string> AllCategoriesNames()=> this.data.ArticleCategories.Select(c => c.ArticleCategoryName).Distinct().ToList();
 
-        public bool CategoryExists(int categoryId) => this.data.ArticleCategories.Any(c => c.Id == categoryId);
+        public ArticleServiceModel ArticleById(int id) =>data.Articles
+                .Where(e => e.Id == id)
+                .Select(e => new ArticleServiceModel
+                {
+                    Id = e.Id,
+                    Title = e.Title,
+                    ArticleText = e.ArticleText,
+                    ImageUrl = e.ImageUrl
+                }).FirstOrDefault();
+
+    public bool CategoryExists(int categoryId) => this.data.ArticleCategories.Any(c => c.Id == categoryId);
 
         public int Create(string title, string articleText, string imgageUrl, int category)
         {
@@ -102,5 +112,7 @@ namespace ExeGuide.Core.Services.Articles
 
             this.data.SaveChanges();
         }
+
+        public bool Exists(int id) => data.Articles.Any(a => a.Id == id);
     }
 }

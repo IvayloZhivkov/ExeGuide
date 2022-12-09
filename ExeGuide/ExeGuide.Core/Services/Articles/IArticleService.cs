@@ -1,4 +1,5 @@
 ﻿using ExeGuide.Core.Services.Articles.Models;
+using ExeGuide.Core.Services.Exercises.Models;
 using ExeGuide.Core.Services.Models;
 using ExeGuide.DataBase.Data.Entities;
 using System;
@@ -24,5 +25,7 @@ namespace ExeGuide.Core.Services.Articles
         IEnumerable<string> AllCategoriesNames();
         public IEnumerable<ArticleCategoryModel> AllCategories();
         bool CategoryExists(int categoryId);
+        bool Exists(int id);
+        ArticleServiceModel ArticleById(int id);
     }
 }
