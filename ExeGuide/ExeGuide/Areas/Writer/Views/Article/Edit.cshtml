@@ -1,0 +1,15 @@
+﻿@model ArticleFormModel
+@{
+    ViewBag.Title = "Edit the article.";
+}
+
+<h2 class="text-center" style="color:white">@ViewBag.Title</h2>
+<hr />
+<div style="color:white">
+
+<partial name="_ArticleFormPartial" model="@Model" />
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

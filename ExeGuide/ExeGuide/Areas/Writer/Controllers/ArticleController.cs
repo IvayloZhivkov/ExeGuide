@@ -79,6 +79,57 @@ namespace ExeGuide.Areas.Writer.Controllers
             articleService.Delete(exercise.Id);
             return RedirectToAction("Index", "Writer");
         }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            if (!articleService.Exists(id))
+            {
+                return BadRequest();
+
+            }
+
+            var article = articleService.ArticleById(id);
+
+           
+            var category = articleService.CategoryId(article.Id);
+
+            var articleModel = new ArticleFormModel()
+            {
+                Title = article.Title,
+                ImageUrl = article.ImageUrl,
+                ArticleText = article.ArticleText,
+                ArticleCategory = articleService.AllCategories()
+                
+            };
+            return View(articleModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Edit(int id, ArticleFormModel article)
+        {
+            if (!articleService.Exists(id))
+            {
+                return View();
+
+            }
+            if (!this.articleService.CategoryExists(article.CategoryId))
+            {
+                this.ModelState.AddModelError(nameof(article.CategoryId), "Category does not exist");
+            }
+
+            if (!ModelState.IsValid)
+            {
+
+                article.ArticleCategory = articleService.AllCategories();
+
+                return View(article);
+            }
+            articleService.Edit(id, article.Title, article.ArticleText, article.ImageUrl, article.CategoryId);
+
+            return RedirectToAction("Index","Writer");
+        }
 
     }
 }

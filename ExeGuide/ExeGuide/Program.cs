@@ -68,6 +68,15 @@ app.UseEndpoints(endpoints =>
     );
 
     endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Editor}/{action=Index}/{id?}"
+    );
+    endpoints.MapControllerRoute(
+           name: "areas",
+           pattern: "{area:exists}/{controller=Writer}/{action=Index}/{id?}"
+         );
+
+    endpoints.MapControllerRoute(
       name: "exerciseDescription",
       pattern: "Exercise/Description/{id}/{information}"
     );

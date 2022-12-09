@@ -27,5 +27,6 @@ namespace ExeGuide.Core.Services.Articles
         bool CategoryExists(int categoryId);
         bool Exists(int id);
         ArticleServiceModel ArticleById(int id);
+        int CategoryId(int categoryId);
     }
 }

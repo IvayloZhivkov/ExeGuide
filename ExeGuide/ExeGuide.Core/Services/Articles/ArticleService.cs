@@ -76,6 +76,8 @@ namespace ExeGuide.Core.Services.Articles
 
     public bool CategoryExists(int categoryId) => this.data.ArticleCategories.Any(c => c.Id == categoryId);
 
+        public int CategoryId(int categoryId) => data.Articles.Find(categoryId).CategoryId;
+
         public int Create(string title, string articleText, string imgageUrl, int category)
         {
             var article = new Article
