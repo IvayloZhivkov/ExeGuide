@@ -2,7 +2,9 @@
 using ExeGuide.Core.Services.Models;
 
 namespace ExeGuide.Areas.Editor.Models
-{
+{ /// <summary>
+/// This is helps us to use the information from the exercises so we can show them in a view or a partial view
+/// </summary>
     public class ExerciseFormModel
     {
         [Required]

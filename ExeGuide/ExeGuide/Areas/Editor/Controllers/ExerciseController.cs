@@ -26,6 +26,12 @@ namespace ExeGuide.Areas.Editor.Controllers
             context = _context;
         }
 
+
+        /// <summary>
+        /// This method returns a view with all exercises in the databse
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
         {
@@ -37,7 +43,7 @@ namespace ExeGuide.Areas.Editor.Controllers
                     Id = User.Id()
                 };
                 context.TrainingUsers.Add(newUser);
-                context.SaveChangesAsync();
+                context.SaveChanges();
             }
             var queryResults = this.exerciseService.All(
                 query.SearchTerm,
@@ -61,6 +67,12 @@ namespace ExeGuide.Areas.Editor.Controllers
             return View(query);
         }
 
+
+        /// <summary>
+        /// This method returns a view containing more information about the chosen exercise
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -72,6 +84,11 @@ namespace ExeGuide.Areas.Editor.Controllers
             return View(exerciseModel);
         }
 
+
+        /// <summary>
+        /// This method returns a view where the editor can add a new exercise to the database
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IActionResult Add()
@@ -85,6 +102,12 @@ namespace ExeGuide.Areas.Editor.Controllers
             });
         }
 
+
+        /// <summary>
+        /// Unpon inserting the new infomation and saving it this method saves the new exercise to the databse
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(ExerciseFormModel model)
@@ -118,6 +141,12 @@ namespace ExeGuide.Areas.Editor.Controllers
             return RedirectToAction(nameof(Details), new { id = newExercise });
         }
 
+
+        /// <summary>
+        /// This method returns a view where the editor can see what exercise he is about to delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IActionResult Delete(int id)
@@ -138,6 +167,12 @@ namespace ExeGuide.Areas.Editor.Controllers
             return View(model);
         }
 
+
+        /// <summary>
+        /// When the editor is shure about his choise, upon clicking the delete button this method activates and deletes the exercise from the database
+        /// </summary>
+        /// <param name="exercise"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Delete(ExerciseDetailsServiceModel exercise)
         {
@@ -149,7 +184,11 @@ namespace ExeGuide.Areas.Editor.Controllers
             return RedirectToAction("Index", "Editor");
         }
 
-
+        /// <summary>
+        /// This method opens a view where the editor will be able to edit the exercise he choses
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IActionResult Edit(int id)
@@ -181,6 +220,13 @@ namespace ExeGuide.Areas.Editor.Controllers
             return View(houseModel);
         }
 
+
+        /// <summary>
+        /// Uppon chosing and editing the exercise this method activates and saves the changes in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="exercise"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public IActionResult Edit(int id, ExerciseFormModel exercise)
