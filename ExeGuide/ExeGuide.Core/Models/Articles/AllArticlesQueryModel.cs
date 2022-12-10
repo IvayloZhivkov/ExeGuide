@@ -5,6 +5,9 @@ using ExeGuide.Core.Services.Exercises.Models;
 
 namespace ExeGuide.Core.Models.Articles
 {
+    /// <summary>
+    /// This class tels the site how much articles per page the will be and othe info that will be shown
+    /// </summary>
     public class AllArticlesQueryModel
     {
         public const int ArticlesPerPage = 3;

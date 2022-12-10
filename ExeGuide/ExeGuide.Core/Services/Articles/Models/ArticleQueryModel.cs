@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ExeGuide.Core.Services.Articles.Models
 {
     /// <summary>
-    /// With this class we tell the site how much articles ther will be in the current page and what there will be (currently Articles)
+    /// With this class we tell the site how much articles ther are and what there will be (currently Articles)
     /// </summary>
     public class ArticleQueryModel
     {
