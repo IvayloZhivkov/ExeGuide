@@ -295,7 +295,7 @@ namespace ExeGuide.Core.Services.Exercises
         /// This method deletes the selscted exercise
         /// </summary>
         /// <param name="categoryId"></param>
-        /// <returns></returns>
+        /// <returns>Deletes a exercise</returns>
         public void Delete(int exerciseId)
         {
             var exerecise = data.Exercises.Find(exerciseId);
@@ -304,7 +304,11 @@ namespace ExeGuide.Core.Services.Exercises
             data.SaveChanges();
         }
 
-
+        /// <summary>
+        /// Removes an exercise from favourites
+        /// </summary>
+        /// <param name="exerciseId"></param>
+        /// <param name="userId"></param>
         public void RemoveFromFavourite(int exerciseId, string userId)
         {
            TrainingUsersExercise ue = data.TrainingUsersExercises.Where(a=>a.UserId ==userId).Where(a=>a.ExerciseId==exerciseId).FirstOrDefault();
