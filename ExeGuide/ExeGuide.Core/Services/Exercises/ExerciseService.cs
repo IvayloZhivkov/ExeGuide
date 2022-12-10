@@ -122,7 +122,7 @@ namespace ExeGuide.Core.Services.Exercises
         public bool Exists(int id) => data.Exercises.Any(h => h.Id == id);
 
         /// <summary>
-        /// Returns all exercises in the user database, but unfortunately MINE function doesnt work properly 
+        /// Returns all exercises in the user database
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -143,7 +143,7 @@ namespace ExeGuide.Core.Services.Exercises
 
 
         /// <summary>
-        /// Inserts an exercise to an user,but unfortunately MINE function doesnt work properly 
+        /// Creates a connection between the user and the exercise
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns

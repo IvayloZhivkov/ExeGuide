@@ -8,10 +8,12 @@ using System.Xml.Linq;
 
 namespace ExeGuide.Core.Services.Articles.Models
 {
+    /// <summary>
+    /// We use this class so we can use the articles information for views and further manipulation
+    /// </summary>
     public class ArticleServiceModel
     {
         public int Id { get; set; }
-
 
         public string Title { get; set; } = null!;
 
