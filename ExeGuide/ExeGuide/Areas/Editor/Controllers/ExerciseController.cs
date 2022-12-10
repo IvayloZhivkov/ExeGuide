@@ -168,6 +168,7 @@ namespace ExeGuide.Areas.Editor.Controllers
         }
 
 
+
         /// <summary>
         /// When the editor is shure about his choise, upon clicking the delete button this method activates and deletes the exercise from the database
         /// </summary>
@@ -184,6 +185,7 @@ namespace ExeGuide.Areas.Editor.Controllers
             return RedirectToAction("Index", "Editor");
         }
 
+        
         /// <summary>
         /// This method opens a view where the editor will be able to edit the exercise he choses
         /// </summary>

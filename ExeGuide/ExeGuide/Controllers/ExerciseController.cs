@@ -71,6 +71,7 @@ namespace ExeGuide.Controllers
             return View(exerciseModel);
         }
 
+       
 
         /// <summary>
         /// This is for redirecting only. If non authorized person tries to "Add" an exercise. And if is authorised, he will be redirected to the correct page.
@@ -152,10 +153,28 @@ namespace ExeGuide.Controllers
                 myExercises = exerciseService.AllExercisesById(user.Id);
             }
             return View(myExercises);
-
         }
 
+        /// <summary>
+        /// Removes an exercise from favourite
+        /// </summary>
+        /// <param name="id">exercise id</param>
+        /// <returns>Removes the exercise from the composite key in the database</returns>
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromFavourites(int id)
+        {
+            if (!exerciseService.Exists(id))
+            {
+                return BadRequest();
+            }
+            var user = User.Id();
+            exerciseService.RemoveFromFavourite(id, user);
+            return RedirectToAction(nameof(Mine));
 
+
+
+        }
 
 
 

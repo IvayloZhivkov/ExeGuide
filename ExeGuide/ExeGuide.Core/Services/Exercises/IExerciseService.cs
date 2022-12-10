@@ -42,6 +42,7 @@ namespace ExeGuide.Core.Services.Exercises
         int MainCategoryId(int categoryId);
         int SubCategoryId(int categoryId);
         int EquipmentId(int categoryId);
+        void RemoveFromFavourite(int exerciseId,string userId);
 
     }
 }

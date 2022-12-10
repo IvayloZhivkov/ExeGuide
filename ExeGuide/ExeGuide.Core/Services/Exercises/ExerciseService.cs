@@ -305,6 +305,14 @@ namespace ExeGuide.Core.Services.Exercises
         }
 
 
+        public void RemoveFromFavourite(int exerciseId, string userId)
+        {
+           TrainingUsersExercise ue = data.TrainingUsersExercises.Where(a=>a.UserId ==userId).Where(a=>a.ExerciseId==exerciseId).FirstOrDefault();
+            data.Remove(ue);
+            int one = 1;
+            data.SaveChanges();
+
+        }
 
         /// <summary>
         /// This method returns the id of a catagory
@@ -328,5 +336,6 @@ namespace ExeGuide.Core.Services.Exercises
         /// <param name="categoryId"></param>
         /// <returns></returns>
         public int EquipmentId(int categoryId) => data.Exercises.Find(categoryId).EquipmentId;
+
     }
 }
