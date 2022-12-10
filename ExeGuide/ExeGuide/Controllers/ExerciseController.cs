@@ -27,8 +27,8 @@ namespace ExeGuide.Controllers
         /// <summary>
         /// This task return the All Exercises page. In it we throw a query with the information we need to show to the user.
         /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
+        /// <param name="query"> Query for the database to show the info we need</param>
+        /// <returns>Returns a view page where we can see all the exercises</returns>
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
         {
@@ -56,10 +56,10 @@ namespace ExeGuide.Controllers
 
 
         /// <summary>
-        /// This IActionResult returns a Details page that shows more information about the chosen exercise.
+        /// Shows details for an exercise
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The chosen Exercise id</param>
+        /// <returns>Returns a view page for details</returns>
         public IActionResult Details(int id)
         {
 
@@ -75,7 +75,7 @@ namespace ExeGuide.Controllers
         /// <summary>
         /// This is for redirecting only. If non authorized person tries to "Add" an exercise. And if is authorised, he will be redirected to the correct page.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns error page or refirects to correct page</returns>
 
         [Authorize]
         public IActionResult Add()
@@ -90,10 +90,10 @@ namespace ExeGuide.Controllers
 
 
         /// <summary>
-        /// This post gives the registered user to "save£ the exercises he likes.
+        /// This post gives the registered user to "save" the exercises he likes.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Exercise id</param>
+        /// <returns>Connects the exercise to the user</returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Favourites(int id)
@@ -124,9 +124,9 @@ namespace ExeGuide.Controllers
 
 
         /// <summary>
-        /// Returns a view where all of the "saved" exercises will be shown, if a user has. If he doesn't the view will tell the user that he doesn't have any.
+        /// Where user can see his favourite exercises
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns a view with favourite exercises</returns>
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Mine()

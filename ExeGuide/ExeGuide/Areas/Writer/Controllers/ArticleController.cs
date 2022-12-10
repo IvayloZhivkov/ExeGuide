@@ -21,9 +21,9 @@ namespace ExeGuide.Areas.Writer.Controllers
 
 
         /// <summary>
-        /// This returns a view where the writer can add a new article 
+        /// This method is for adding a new article
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns a view where the writer can add a new article </returns>
         [Authorize]
         [HttpGet]
         public IActionResult Add()
@@ -36,7 +36,7 @@ namespace ExeGuide.Areas.Writer.Controllers
                     Id = User.Id()
                 };
                 context.TrainingUsers.Add(newUser);
-                context.SaveChangesAsync();
+                context.SaveChanges();
             }
 
             return View(new ArticleFormModel
@@ -50,8 +50,8 @@ namespace ExeGuide.Areas.Writer.Controllers
         /// <summary>
         /// This post method adds the newly created article to the database
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">The newly created article</param>
+        /// <returns>Adds the article to the databse</returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(ArticleFormModel model)
@@ -69,7 +69,7 @@ namespace ExeGuide.Areas.Writer.Controllers
 
                 return View(model);
             }
-            var newArticle = this.articleService.Create(model.Title, model.ArticleText, model.ImageUrl, model.CategoryId);
+            this.articleService.Create(model.Title, model.ArticleText, model.ImageUrl, model.CategoryId);
 
             return RedirectToAction("Index","Writer");
         }
@@ -77,8 +77,8 @@ namespace ExeGuide.Areas.Writer.Controllers
         /// <summary>
         /// The method returns a view where the writeer to see if this is the article that he actually wants to delete
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Article id</param>
+        /// <returns>Returns a view</returns>
         [Authorize]
         [HttpGet]
         public IActionResult Delete(int id)
@@ -102,16 +102,16 @@ namespace ExeGuide.Areas.Writer.Controllers
         /// <summary>
         /// The method deletes the chosen article by the writer
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="article">The chosen article</param>
+        /// <returns>Deletes the article from the database</returns>
         [HttpPost]
-        public IActionResult Delete(ArticleServiceModel exercise)
+        public IActionResult Delete(ArticleServiceModel article)
         {
-            if (!articleService.Exists(exercise.Id))
+            if (!articleService.Exists(article.Id))
             {
                 return BadRequest();
             }
-            articleService.Delete(exercise.Id);
+            articleService.Delete(article.Id);
             return RedirectToAction("Index", "Writer");
         }
 
@@ -119,8 +119,8 @@ namespace ExeGuide.Areas.Writer.Controllers
         /// <summary>
         /// With this class the writer will open a view where he can edit the things he want
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The article Id</param>
+        /// <returns>Edit view</returns>
         [Authorize]
         [HttpGet]
         public IActionResult Edit(int id)
@@ -153,9 +153,9 @@ namespace ExeGuide.Areas.Writer.Controllers
         /// <summary>
         /// This method inserts the changes in the article in the database
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="article"></param>
-        /// <returns></returns>
+        /// <param name="id"> The article's Id</param>
+        /// <param name="article">The chosen article</param>
+        /// <returns>Changes the edited information</returns>
         [Authorize]
         [HttpPost]
         public IActionResult Edit(int id, ArticleFormModel article)

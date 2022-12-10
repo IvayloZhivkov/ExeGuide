@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 using static ExeGuide.Areas.Editor.Constants.EditorConstants;
+using static ExeGuide.Areas.Writer.Constants.WriterConstants;
 
 namespace ExeGuide.Controllers
 {
@@ -30,7 +31,7 @@ namespace ExeGuide.Controllers
             {
                 return RedirectToAction("Index", "Editor", new { area = "Editor" });
             }
-            if (User.IsInRole(EditorRolleName))
+            if (User.IsInRole(WriterRolleName))
             {
                 return RedirectToAction("Index", "Writer", new { area = "Writer" });
             }
