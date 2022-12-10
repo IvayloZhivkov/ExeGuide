@@ -24,6 +24,11 @@ namespace ExeGuide.Controllers
             this.context = context;
         }
 
+        /// <summary>
+        /// This task return the All Exercises page. In it we throw a query with the information we need to show to the user.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
         {
@@ -50,6 +55,11 @@ namespace ExeGuide.Controllers
         }
 
 
+        /// <summary>
+        /// This IActionResult returns a Details page that shows more information about the chosen exercise.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult Details(int id)
         {
 
@@ -60,6 +70,12 @@ namespace ExeGuide.Controllers
             var exerciseModel = exerciseService.ExerciseDetailsById(id);
             return View(exerciseModel);
         }
+
+
+        /// <summary>
+        /// This is for redirecting only. If non authorized person tries to "Add" an exercise. And if is authorised, he will be redirected to the correct page.
+        /// </summary>
+        /// <returns></returns>
 
         [Authorize]
         public IActionResult Add()
@@ -72,6 +88,12 @@ namespace ExeGuide.Controllers
         }
 
 
+
+        /// <summary>
+        /// This post gives the registered user to "save£ the exercises he likes.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Favourites(int id)
@@ -101,7 +123,10 @@ namespace ExeGuide.Controllers
         }
 
 
-
+        /// <summary>
+        /// Returns a view where all of the "saved" exercises will be shown, if a user has. If he doesn't the view will tell the user that he doesn't have any.
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Mine()

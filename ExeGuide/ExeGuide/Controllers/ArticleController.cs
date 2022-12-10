@@ -15,6 +15,13 @@ namespace ExeGuide.Controllers
         {
             articleService = _articleService;
         }
+
+
+        /// <summary>
+        /// Thhis task returns a view with all of the articles that there are
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns>View</returns>
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllArticlesQueryModel query)
         {
@@ -34,6 +41,11 @@ namespace ExeGuide.Controllers
 
             return View(query);
         }
+
+        /// <summary>
+        /// This class we use to ensure that the right user enters this page. If the user is unauthorized, there will be an error page for him.
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public IActionResult Add()
         {

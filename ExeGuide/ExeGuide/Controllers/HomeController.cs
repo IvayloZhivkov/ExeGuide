@@ -20,11 +20,19 @@ namespace ExeGuide.Controllers
         {
             this.data = _data;
         }
+        /// <summary>
+        /// This is the Index action. In it we have two checks so that the site redurects the different users to different pages. We have two roles so there are two ifs
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             if (User.IsInRole(EditorRolleName))
             {
                 return RedirectToAction("Index", "Editor", new { area = "Editor" });
+            }
+            if (User.IsInRole(EditorRolleName))
+            {
+                return RedirectToAction("Index", "Writer", new { area = "Writer" });
             }
             return View();
         }
