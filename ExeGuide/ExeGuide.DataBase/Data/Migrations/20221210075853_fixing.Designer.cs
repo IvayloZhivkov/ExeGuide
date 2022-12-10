@@ -4,6 +4,7 @@ using ExeGuide.DataBase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExeGuide.DataBase.Data.Migrations
 {
     [DbContext(typeof(ExeGuideDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221210075853_fixing")]
+    partial class fixing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -521,6 +523,44 @@ namespace ExeGuide.DataBase.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TrainingUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "069dac49-ce53-47fe-b3c9-8962a29e8e6e",
+                            Email = "editor@traininghelper.com",
+                            EmailConfirmed = false,
+                            FirstName = "Great",
+                            LastName = "Editor",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "editor@traininghelper.com",
+                            NormalizedUserName = "editor@traininghelper.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP4AB488/d6ZOgRP6mQZOAUGRUOmQvnk7a5dXxXDLE2z5MFNEuNf9NXMl7mPLqF41g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ae199eb3-0b81-4999-80f1-b876a7080766",
+                            TwoFactorEnabled = false,
+                            UserName = "editor@traininghelper.com"
+                        },
+                        new
+                        {
+                            Id = "e4885526-b62d-4ba4-9b84-1ae80535863a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ffce8b4b-9050-4c95-9215-e613ba19c2c8",
+                            Email = "writer@exeguide.com",
+                            EmailConfirmed = false,
+                            FirstName = "Great",
+                            LastName = "Writer",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "writer@exeguide.com",
+                            NormalizedUserName = "writer@exeguide.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMoLp+JFmRJIVbiEz48R8Ayo6QJCCpq8FgEgpj3IdamEyTJDsK9tuMnIE/u1Udm4Pg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "86d2c1ce-17a0-4f38-9c2c-4b73ff75cb42",
+                            TwoFactorEnabled = false,
+                            UserName = "writer@exeguide.com"
+                        });
                 });
 
             modelBuilder.Entity("ExeGuide.DataBase.Data.Entities.TrainingUsersExercise", b =>
@@ -653,40 +693,6 @@ namespace ExeGuide.DataBase.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "94ebcaf7-5caf-4e20-8adf-418e3ee1be96",
-                            Email = "editor@traininghelper.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "editor@traininghelper.com",
-                            NormalizedUserName = "editor@traininghelper.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHU4vynprXn7KRt4JDlHQkzs6+v0aWbsBxhoPZyGg0x6z/3b5gWAH0duIwzW7pKkfw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "1960afce-8671-4d48-92c0-8e43c528af09",
-                            TwoFactorEnabled = false,
-                            UserName = "editor@traininghelper.com"
-                        },
-                        new
-                        {
-                            Id = "e4885526-b62d-4ba4-9b84-1ae80535863a",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "feea5e4f-0b46-414c-9338-1f9e1b7db13c",
-                            Email = "writer@exeguide.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "writer@exeguide.com",
-                            NormalizedUserName = "writer@exeguide.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAED7mPOTOUMwCJZYF3sYJrG563a8QyLtCZWTePwls/7zau07nzIqiTO1L6UWgGckduA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "917425cb-45f6-471e-9ea9-0ab81857840e",
-                            TwoFactorEnabled = false,
-                            UserName = "writer@exeguide.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>

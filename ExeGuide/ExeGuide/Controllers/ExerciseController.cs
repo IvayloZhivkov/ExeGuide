@@ -87,24 +87,26 @@ namespace ExeGuide.Controllers
             exerciseService.AddToFav(user.Id, id);
             return RedirectToAction(nameof(All));
         }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> Mine()
-        {
-            IEnumerable<ExerciseServiceModel> myExercises = null;
+        //Cannot fix it. It throws a error in the database.
 
 
-            var userId = User.Id();
-            if (users.ExistById(userId))
-            {
-                var user = users.GetUserById(userId);
+        //[Authorize]
+        //[HttpGet]
+        //public async Task<IActionResult> Mine()
+        //{
+        //    IEnumerable<ExerciseServiceModel> myExercises = null;
 
-                myExercises = exerciseService.AllExercisesById(user.Id);
-            }
-            return View(myExercises);
 
-        }
+        //    var userId = User.Id();
+        //    if (users.ExistById(userId))
+        //    {
+        //        var user = users.GetUserById(userId);
+
+        //        myExercises = exerciseService.AllExercisesById(user.Id);
+        //    }
+        //    return View(myExercises);
+
+        //}
 
 
 

@@ -4,6 +4,7 @@ using ExeGuide.DataBase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExeGuide.DataBase.Data.Migrations
 {
     [DbContext(typeof(ExeGuideDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221210075319_TrainingUsersINsertTry")]
+    partial class TrainingUsersINsertTry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -659,15 +661,15 @@ namespace ExeGuide.DataBase.Data.Migrations
                         {
                             Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "94ebcaf7-5caf-4e20-8adf-418e3ee1be96",
+                            ConcurrencyStamp = "1a54794e-98f2-4567-a1cd-5f6cf6b7b58d",
                             Email = "editor@traininghelper.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "editor@traininghelper.com",
                             NormalizedUserName = "editor@traininghelper.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHU4vynprXn7KRt4JDlHQkzs6+v0aWbsBxhoPZyGg0x6z/3b5gWAH0duIwzW7pKkfw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA0qRGz8YPWBIaYRyFdc7WyRqmD+JPyP0RriLjLuJJ+FLI1gZipdcAJIPhmylob1gw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1960afce-8671-4d48-92c0-8e43c528af09",
+                            SecurityStamp = "28ec92f0-566a-48fb-90c1-333b04dc0ba0",
                             TwoFactorEnabled = false,
                             UserName = "editor@traininghelper.com"
                         },
@@ -675,15 +677,15 @@ namespace ExeGuide.DataBase.Data.Migrations
                         {
                             Id = "e4885526-b62d-4ba4-9b84-1ae80535863a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "feea5e4f-0b46-414c-9338-1f9e1b7db13c",
+                            ConcurrencyStamp = "78c046f5-9c7a-4b04-a64b-a2ef1ff2c4ed",
                             Email = "writer@exeguide.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "writer@exeguide.com",
                             NormalizedUserName = "writer@exeguide.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAED7mPOTOUMwCJZYF3sYJrG563a8QyLtCZWTePwls/7zau07nzIqiTO1L6UWgGckduA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM4J9uP6QbuPCBT21gJg4owzvDcbx+KT8AUB/Q9HKhwZGOfgr4yDfZgDzu+s+nxJng==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "917425cb-45f6-471e-9ea9-0ab81857840e",
+                            SecurityStamp = "68940ef4-7917-496f-93c1-e56cca4895b9",
                             TwoFactorEnabled = false,
                             UserName = "writer@exeguide.com"
                         });

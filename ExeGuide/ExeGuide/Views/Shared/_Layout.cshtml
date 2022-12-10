@@ -33,13 +33,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="All">Articles</a>
                         </li>
 
-                        @if (this.User.Identity.IsAuthenticated)
+                       @* @if (this.User.Identity.IsAuthenticated)
                         {
                             <div class="vertLine"> </div>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Mine">My Favourites</a>
                             </li>
-                        }
+                        }*@
                         @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole("Editing"))
                         {
                             <div class="vertLine"> </div>

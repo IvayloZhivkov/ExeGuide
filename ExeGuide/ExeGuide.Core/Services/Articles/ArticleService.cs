@@ -19,6 +19,15 @@ namespace ExeGuide.Core.Services.Articles
             this.data = data;
         }
 
+
+        /// <summary>
+        /// This method returns all articles to the page
+        /// </summary>
+        /// <param name="searchTerm"></param>
+        /// <param name="ctegoryName"></param>
+        /// <param name="currPage"></param>
+        /// <param name="articlesPerPage"></param>
+        /// <returns></returns>
         public ArticleQueryModel All(string searchTerm = null, string ctegoryName = null, int currPage = 1, int articlesPerPage = 1)
         {
             var articleQuerry = this.data.Articles.AsQueryable();
@@ -52,6 +61,12 @@ namespace ExeGuide.Core.Services.Articles
             };
         }
 
+
+
+        /// <summary>
+        /// This method returns all categories 
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ArticleCategoryModel> AllCategories() =>
             this.data
             .ArticleCategories
@@ -62,9 +77,23 @@ namespace ExeGuide.Core.Services.Articles
             })
             .ToList();
 
-        public IEnumerable<string> AllCategoriesNames()=> this.data.ArticleCategories.Select(c => c.ArticleCategoryName).Distinct().ToList();
 
-        public ArticleServiceModel ArticleById(int id) =>data.Articles
+
+
+        /// <summary>
+        /// This method returns all categories names
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<string> AllCategoriesNames() => this.data.ArticleCategories.Select(c => c.ArticleCategoryName).Distinct().ToList();
+
+
+
+        /// <summary>
+        /// Returns a article by it's id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ArticleServiceModel ArticleById(int id) => data.Articles
                 .Where(e => e.Id == id)
                 .Select(e => new ArticleServiceModel
                 {
@@ -74,10 +103,34 @@ namespace ExeGuide.Core.Services.Articles
                     ImageUrl = e.ImageUrl
                 }).FirstOrDefault();
 
-    public bool CategoryExists(int categoryId) => this.data.ArticleCategories.Any(c => c.Id == categoryId);
 
+
+        /// <summary>
+        /// This method ensures that the category exists in the database
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        public bool CategoryExists(int categoryId) => this.data.ArticleCategories.Any(c => c.Id == categoryId);
+
+
+
+        /// <summary>
+        /// This method finds the category's id
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public int CategoryId(int categoryId) => data.Articles.Find(categoryId).CategoryId;
 
+
+
+        /// <summary>
+        /// This method helps creating the article
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="articleText"></param>
+        /// <param name="imgageUrl"></param>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public int Create(string title, string articleText, string imgageUrl, int category)
         {
             var article = new Article
@@ -94,6 +147,11 @@ namespace ExeGuide.Core.Services.Articles
             return article.Id;
         }
 
+
+        /// <summary>
+        /// This method deletes the selected article
+        /// </summary>
+        /// <param name="articleId"></param>
         public void Delete(int articleId)
         {
 
@@ -103,6 +161,11 @@ namespace ExeGuide.Core.Services.Articles
             data.SaveChanges();
         }
 
+
+        /// <summary>
+        /// This method edits the selected article
+        /// </summary>
+        /// <param name="articleId"></param>
         public void Edit(int articleId, string title, string articleText, string imgageUrl, int category)
         {
             var article = data.Articles.Find(articleId);
@@ -115,6 +178,12 @@ namespace ExeGuide.Core.Services.Articles
             this.data.SaveChanges();
         }
 
+
+        /// <summary>
+        /// This method find that the database contains an article with the same Id or not
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Exists(int id) => data.Articles.Any(a => a.Id == id);
     }
 }

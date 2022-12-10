@@ -7,7 +7,7 @@ namespace ExeGuide.Core.Services.Exercises
 {
     public interface IExerciseService
     {
-        IEnumerable<ExerciseIndexServiceModel> AllShowingSlide();
+       
 
         ExercisesQueryModel All(
             string searchTerm = null,

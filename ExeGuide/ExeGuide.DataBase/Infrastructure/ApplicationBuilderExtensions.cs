@@ -56,7 +56,7 @@ namespace ExeGuide.DataBase.Infrastructure
                 {
                     var editor = await userManager.FindByNameAsync(EditorEmail);
                     var role = roleManager.Roles.FirstOrDefault(e => e.Name == EditorRolleName);
-                    if (await userManager.IsInRoleAsync(editor,role.Name))
+                    if (await userManager.IsInRoleAsync(editor,"Editing"))
                     {
                         return;
                     }

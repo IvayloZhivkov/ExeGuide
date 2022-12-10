@@ -24,6 +24,16 @@ namespace ExeGuide.Core.Services.Exercises
             this.user = _user;
         }
 
+        /// <summary>
+        /// This method gives us all the exercises in the database by the given criteria
+        /// </summary>
+        /// <param name="searchTerm"></param>
+        /// <param name="mainCategory"></param>
+        /// <param name="subCategory"></param>
+        /// <param name="equipment"></param>
+        /// <param name="currPage"></param>
+        /// <param name="exercisesPerPage"></param>
+        /// <returns></returns>
         public ExercisesQueryModel All(string searchTerm = null, string mainCategory = null, string subCategory = null, string equipment = null, int currPage = 1, int exercisesPerPage = 1)
         {
             var exerciseQuery = this.data.Exercises.AsQueryable();
@@ -67,22 +77,30 @@ namespace ExeGuide.Core.Services.Exercises
             };
         }
 
+        /// <summary>
+        /// This method returns all the names in the equipment catagory
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> AllEquipmentNames() => this.data.Equipments.Select(c => c.Name).Distinct().ToList();
+        /// <summary>
+        /// This method returns all the names in the main catagory
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> AllMainCategoriesNames() => this.data.MainCategories.Select(c => c.MainCategoryName).Distinct().ToList();
+        /// <summary>
+        /// This method returns all the names in the sub catagory
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> AllSubCategoriesNames() => this.data.SubCategories.Select(c => c.SubCategoryName).Distinct().ToList();
 
 
 
-        public IEnumerable<ExerciseIndexServiceModel> AllShowingSlide() =>
-            this.data
-            .Exercises
-            .Select(e => new ExerciseIndexServiceModel
-            {
-                Id = e.Id,
-                Title = e.Name,
-                ImageUrl = e.ImageUrl
-            });
-
+       
+        /// <summary>
+        /// Return the exercise details by the given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ExerciseDetailsServiceModel ExerciseDetailsById(int id) => data.Exercises
                 .Where(e => e.Id == id)
                 .Select(e => new ExerciseDetailsServiceModel
@@ -96,8 +114,18 @@ namespace ExeGuide.Core.Services.Exercises
                     Equipment = e.Equipment.Name,
                 }).FirstOrDefault();
 
+        /// <summary>
+        /// Ensures that the given exercise exist in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Exists(int id) => data.Exercises.Any(h => h.Id == id);
 
+        /// <summary>
+        /// Returns all exercises in the user database, but unfortunately MINE function doesnt work properly 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public IEnumerable<ExerciseServiceModel> AllExercisesById(string userId)
         {
             var exercises = data.TrainingUsersExercises.Where(h => h.UserId == userId);
@@ -114,7 +142,11 @@ namespace ExeGuide.Core.Services.Exercises
         }
 
 
-
+        /// <summary>
+        /// Inserts an exercise to an user,but unfortunately MINE function doesnt work properly 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns
         public void AddToFav(string userId, int exerciseId)
         {
 
@@ -133,6 +165,12 @@ namespace ExeGuide.Core.Services.Exercises
 
         }
 
+
+
+        /// <summary>
+        /// This methods makes possible to reach the category name
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ExerciseMainCategoryModel> AllMainCategories() =>
             this.data
             .MainCategories
@@ -143,6 +181,12 @@ namespace ExeGuide.Core.Services.Exercises
             })
             .ToList();
 
+
+
+        /// <summary>
+        /// This methods makes possible to reach the category name
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ExerciseSubCategoryModel> AllSubCategories() =>
             this.data
             .SubCategories
@@ -152,6 +196,13 @@ namespace ExeGuide.Core.Services.Exercises
                 Name = c.SubCategoryName
             })
             .ToList();
+
+
+
+        /// <summary>
+        /// This methods makes possible to reach the category name
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ExerciseEquipmentModel> AllEquipments() =>
             this.data
             .Equipments
@@ -162,13 +213,41 @@ namespace ExeGuide.Core.Services.Exercises
             })
             .ToList();
 
-        
+
+
+
+        /// <summary>
+        /// Ensures that the current category exists in the database
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public bool MainCategoryExists(int categoryId) => this.data.MainCategories.Any(c => c.Id == categoryId);
 
-        public bool SubCategoryExists(int categoryId) => this.data.SubCategories.Any(c => c.Id == categoryId);
 
+
+        /// <summary>
+        /// Ensures that the current category exists in the database
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        public bool SubCategoryExists(int categoryId) => this.data.SubCategories.Any(c => c.Id == categoryId);
+       
+
+       
+        /// <summary>
+        /// Ensures that the current category exists in the database
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public bool EquipmentExists(int categoryId) => this.data.Equipments.Any(c => c.Id == categoryId);
 
+
+
+        /// <summary>
+        /// This method adds a newly created exercise
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public int Create(string title, string description, string imgageUrl, int mainCategoryId, int subCategoryId, int equipmentId)
         {
 
@@ -188,6 +267,13 @@ namespace ExeGuide.Core.Services.Exercises
 
             return ex.Id;
         }
+
+
+        /// <summary>
+        /// This method edits the selscted exercise
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public void Edit(int exerciseId,string title, string description, string imgageUrl, int mainCategoryId, int subCategoryId, int equipmentId)
         {
             var exercise = data.Exercises.Find(exerciseId);
@@ -205,6 +291,11 @@ namespace ExeGuide.Core.Services.Exercises
         }
 
 
+        /// <summary>
+        /// This method deletes the selscted exercise
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public void Delete(int exerciseId)
         {
             var exerecise = data.Exercises.Find(exerciseId);
@@ -213,10 +304,29 @@ namespace ExeGuide.Core.Services.Exercises
             data.SaveChanges();
         }
 
+
+
+        /// <summary>
+        /// This method returns the id of a catagory
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public int MainCategoryId(int categoryId) => data.Exercises.Find(categoryId).MainCategoryId;
 
+
+        /// <summary>
+        /// This method returns the id of a catagory
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public int SubCategoryId(int categoryId) => data.Exercises.Find(categoryId).MainCategoryId;
 
+
+        /// <summary>
+        /// This method returns the id of a catagory
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public int EquipmentId(int categoryId) => data.Exercises.Find(categoryId).EquipmentId;
     }
 }
