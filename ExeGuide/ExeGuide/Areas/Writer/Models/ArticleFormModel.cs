@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ExeGuide.Areas.Writer.Models
 {
+    /// <summary>
+    /// This clas we explain what information an article containss
+    /// </summary>
     public class ArticleFormModel
     {
         [Required]

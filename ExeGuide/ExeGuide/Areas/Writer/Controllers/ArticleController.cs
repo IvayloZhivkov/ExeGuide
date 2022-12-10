@@ -1,9 +1,6 @@
-﻿using ExeGuide.Areas.Editor.Models;
-using ExeGuide.Areas.Writer.Models;
+﻿using ExeGuide.Areas.Writer.Models;
 using ExeGuide.Core.Services.Articles;
 using ExeGuide.Core.Services.Articles.Models;
-using ExeGuide.Core.Services.Exercises;
-using ExeGuide.Core.Services.Exercises.Models;
 using ExeGuide.DataBase.Data;
 using ExeGuide.DataBase.Data.Entities;
 using ExeGuide.DataBase.Infrastructure;
@@ -21,6 +18,12 @@ namespace ExeGuide.Areas.Writer.Controllers
             articleService = _articleService;
             context = _context;
         }
+
+
+        /// <summary>
+        /// This returns a view where the writer can add a new article 
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IActionResult Add()
@@ -43,6 +46,12 @@ namespace ExeGuide.Areas.Writer.Controllers
             });
         }
 
+
+        /// <summary>
+        /// This post method adds the newly created article to the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(ArticleFormModel model)
@@ -64,6 +73,12 @@ namespace ExeGuide.Areas.Writer.Controllers
 
             return RedirectToAction("Index","Writer");
         }
+
+        /// <summary>
+        /// The method returns a view where the writeer to see if this is the article that he actually wants to delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IActionResult Delete(int id)
@@ -84,6 +99,11 @@ namespace ExeGuide.Areas.Writer.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// The method deletes the chosen article by the writer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Delete(ArticleServiceModel exercise)
         {
@@ -94,6 +114,13 @@ namespace ExeGuide.Areas.Writer.Controllers
             articleService.Delete(exercise.Id);
             return RedirectToAction("Index", "Writer");
         }
+
+
+        /// <summary>
+        /// With this class the writer will open a view where he can edit the things he want
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IActionResult Edit(int id)
@@ -120,6 +147,15 @@ namespace ExeGuide.Areas.Writer.Controllers
             return View(articleModel);
         }
 
+
+
+
+        /// <summary>
+        /// This method inserts the changes in the article in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="article"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public IActionResult Edit(int id, ArticleFormModel article)
