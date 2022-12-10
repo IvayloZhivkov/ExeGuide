@@ -4,6 +4,9 @@ using ExeGuide.Core.Services.Articles;
 using ExeGuide.Core.Services.Articles.Models;
 using ExeGuide.Core.Services.Exercises;
 using ExeGuide.Core.Services.Exercises.Models;
+using ExeGuide.DataBase.Data;
+using ExeGuide.DataBase.Data.Entities;
+using ExeGuide.DataBase.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,15 +14,27 @@ namespace ExeGuide.Areas.Writer.Controllers
 {
     public class ArticleController : WriterController
     {
+        private readonly ExeGuideDbContext context;
         private readonly IArticleService articleService;
-        public ArticleController(IArticleService _articleService)
+        public ArticleController(IArticleService _articleService,ExeGuideDbContext _context)
         {
             articleService = _articleService;
+            context = _context;
         }
         [Authorize]
         [HttpGet]
         public IActionResult Add()
         {
+            bool userExist = context.TrainingUsers.Any(t => t.Id == User.Id());
+            if (!userExist)
+            {
+                var newUser = new TrainingUser()
+                {
+                    Id = User.Id()
+                };
+                context.TrainingUsers.Add(newUser);
+                context.SaveChangesAsync();
+            }
 
             return View(new ArticleFormModel
             {

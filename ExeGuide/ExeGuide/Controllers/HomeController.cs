@@ -1,5 +1,8 @@
 ﻿using ExeGuide.Core.Models;
 using ExeGuide.Core.Services.Exercises;
+using ExeGuide.DataBase.Data;
+using ExeGuide.DataBase.Data.Entities;
+using ExeGuide.DataBase.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -10,6 +13,7 @@ namespace ExeGuide.Controllers
 {
     public class HomeController : Controller
     {
+        
         public readonly IExerciseService data;
 
         public HomeController(IExerciseService _data)

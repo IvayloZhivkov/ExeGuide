@@ -9,23 +9,36 @@ using ExeGuide.DataBase.Infrastructure;
 using static ExeGuide.DataBase.Data.Constants.EditorConstants;
 using ExeGuide.Core.Services.Exercises.Models;
 using System.Reflection.Metadata;
+using ExeGuide.DataBase.Data;
+using ExeGuide.DataBase.Data.Entities;
 
 namespace ExeGuide.Areas.Editor.Controllers
 {
     public class ExerciseController : EditorController
     {
+        private readonly ExeGuideDbContext context;
         private readonly IExerciseService exerciseService;
         private readonly IUserService users;
-        public ExerciseController(IExerciseService exerciseService, IUserService userService)
+        public ExerciseController(IExerciseService exerciseService, IUserService userService, ExeGuideDbContext _context)
         {
             this.exerciseService = exerciseService;
             this.users = userService;
+            context = _context;
         }
 
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
         {
-
+            bool userExist = context.TrainingUsers.Any(t => t.Id == User.Id());
+            if (!userExist)
+            {
+                var newUser = new TrainingUser()
+                {
+                    Id = User.Id()
+                };
+                context.TrainingUsers.Add(newUser);
+                context.SaveChangesAsync();
+            }
             var queryResults = this.exerciseService.All(
                 query.SearchTerm,
                 query.MainCategoryName,

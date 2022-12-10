@@ -2,6 +2,8 @@
 using ExeGuide.Core.Services.Exercises;
 using ExeGuide.Core.Services.Exercises.Models;
 using ExeGuide.Core.Services.Users;
+using ExeGuide.DataBase.Data;
+using ExeGuide.DataBase.Data.Entities;
 using ExeGuide.DataBase.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Metadata;
@@ -12,19 +14,19 @@ namespace ExeGuide.Controllers
 {
     public class ExerciseController : Controller
     {
-
+        private readonly ExeGuideDbContext context; 
         private readonly IExerciseService exerciseService;
         private readonly IUserService users;
-        public ExerciseController(IExerciseService exerciseService, IUserService userService)
+        public ExerciseController(IExerciseService exerciseService, IUserService userService, ExeGuideDbContext context)
         {
             this.exerciseService = exerciseService;
             this.users = userService;
+            this.context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] AllExercisesQueryModel query)
         {
-
             var queryResults = this.exerciseService.All(
                 query.SearchTerm,
                 query.MainCategoryName,
@@ -74,6 +76,16 @@ namespace ExeGuide.Controllers
         [HttpPost]
         public async Task<IActionResult> Favourites(int id)
         {
+            bool userExist = context.TrainingUsers.Any(t => t.Id == User.Id());
+            if (!userExist)
+            {
+                var newUser = new TrainingUser()
+                {
+                    Id = User.Id()
+                };
+                context.TrainingUsers.Add(newUser);
+                context.SaveChanges();
+            }
             string currUserString = User.Id();
 
             var user = users.GetUserById(currUserString);
@@ -87,26 +99,36 @@ namespace ExeGuide.Controllers
             exerciseService.AddToFav(user.Id, id);
             return RedirectToAction(nameof(All));
         }
-        //Cannot fix it. It throws a error in the database.
 
 
-        //[Authorize]
-        //[HttpGet]
-        //public async Task<IActionResult> Mine()
-        //{
-        //    IEnumerable<ExerciseServiceModel> myExercises = null;
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Mine()
+        {
+            bool userExist = context.TrainingUsers.Any(t => t.Id == User.Id());
+            if (!userExist)
+            {
+                var newUser = new TrainingUser()
+                {
+                    Id = User.Id()
+                };
+                context.TrainingUsers.Add(newUser);
+                await context.SaveChangesAsync();
+            }
+            IEnumerable<ExerciseServiceModel> myExercises = null;
 
 
-        //    var userId = User.Id();
-        //    if (users.ExistById(userId))
-        //    {
-        //        var user = users.GetUserById(userId);
+            var userId = User.Id();
+            if (users.ExistById(userId))
+            {
+                var user = users.GetUserById(userId);
 
-        //        myExercises = exerciseService.AllExercisesById(user.Id);
-        //    }
-        //    return View(myExercises);
+                myExercises = exerciseService.AllExercisesById(user.Id);
+            }
+            return View(myExercises);
 
-        //}
+        }
 
 
 

@@ -3,7 +3,6 @@ using ExeGuide.Core.Services.Articles;
 using ExeGuide.Core.Services.Exercises;
 using ExeGuide.Core.Services.Users;
 using ExeGuide.DataBase.Data;
-using ExeGuide.DataBase.Data.Entities;
 using ExeGuide.DataBase.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
