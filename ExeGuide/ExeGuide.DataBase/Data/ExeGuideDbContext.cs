@@ -27,6 +27,7 @@ namespace ExeGuide.DataBase.Data
             builder.ApplyConfiguration(new MainCategoryConfiguration());
             builder.ApplyConfiguration(new SubCategoryConfiguration());
             builder.ApplyConfiguration(new ArticleCategoryConfiguration());
+            builder.ApplyConfiguration(new ArticleConfiguration());
             
             builder.Entity<Exercise>()
                  .HasOne(e => e.Equipment)
