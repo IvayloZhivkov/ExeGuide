@@ -17,7 +17,7 @@ namespace ExeGuide.DataBase.Data
         public ExeGuideDbContext(DbContextOptions<ExeGuideDbContext> options)
             : base(options)
         {
-            this.Database.Migrate();
+            //this.Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

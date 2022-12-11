@@ -319,7 +319,7 @@ namespace ExeGuide.Core.Services.Exercises
         }
 
         /// <summary>
-        /// This method returns the id of a catagory
+        /// This method returns the id of a category
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
@@ -327,7 +327,7 @@ namespace ExeGuide.Core.Services.Exercises
 
 
         /// <summary>
-        /// This method returns the id of a catagory
+        /// This method returns the id of a category
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
@@ -335,7 +335,7 @@ namespace ExeGuide.Core.Services.Exercises
 
 
         /// <summary>
-        /// This method returns the id of a catagory
+        /// This method returns the id of a category
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>

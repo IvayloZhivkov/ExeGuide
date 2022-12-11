@@ -185,98 +185,6 @@
               "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.Core\\ExeGuide.Core.csproj": {
                 "projectPath": "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.Core\\ExeGuide.Core.csproj"
               },
-              "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.csproj": {
-                "projectPath": "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "FakeItEasy": {
-              "target": "Package",
-              "version": "[7.3.1, )"
-            },
-            "Microsoft.AspNetCore.Mvc.Testing": {
-              "target": "Package",
-              "version": "[6.0.11, )"
-            },
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[17.1.0, )"
-            },
-            "coverlet.collector": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.1.2, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.4.1, )"
-            },
-            "xunit.runner.visualstudio": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.4.3, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.csproj",
-        "projectName": "ExeGuide",
-        "projectPath": "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.csproj",
-        "packagesPath": "C:\\Users\\ivkoj\\.nuget\\packages\\",
-        "outputPath": "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\ivkoj\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.Core\\ExeGuide.Core.csproj": {
-                "projectPath": "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.Core\\ExeGuide.Core.csproj"
-              },
               "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.DataBase\\ExeGuide.DataBase.csproj": {
                 "projectPath": "C:\\ExeGuide\\ExeGuide\\ExeGuide\\ExeGuide.DataBase\\ExeGuide.DataBase.csproj"
               }
@@ -293,29 +201,33 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.11, )"
             },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[6.0.11, )"
+              "version": "[17.1.0, )"
             },
-            "Microsoft.AspNetCore.Identity.UI": {
+            "Moq": {
               "target": "Package",
-              "version": "[6.0.11, )"
+              "version": "[4.18.3, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "NUnit": {
               "target": "Package",
-              "version": "[6.0.11, )"
+              "version": "[3.13.3, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
+            "NUnit.Analyzers": {
               "target": "Package",
-              "version": "[6.0.11, )"
+              "version": "[3.3.0, )"
             },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+            "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
             }
           },
           "imports": [
@@ -330,9 +242,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
