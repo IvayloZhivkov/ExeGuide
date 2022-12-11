@@ -44,6 +44,30 @@ namespace ExeGuide.UnitTests.Tests
             await  context.SaveChangesAsync();
             var result = service.All();
 
+            Assert.That(result.TotalArticlesCount == 3);
+        }
+        [Test]
+        public async Task AllArticles2Test()
+        {
+            var repo = new Repository(context);
+            service = new ArticleService(context);
+
+            await repo.AddAsync(new Article() { Id = 99, Title = "", ArticleText = "", CategoryId = 1, ImageUrl = "" });
+            await context.SaveChangesAsync();
+            var result = service.All("Daddy");
+
+            Assert.That(result.TotalArticlesCount == 1);
+        }
+        [Test]
+        public async Task AllArticles3Test()
+        {
+            var repo = new Repository(context);
+            service = new ArticleService(context);
+
+            await repo.AddAsync(new Article() { Id = 99, Title = "Cbum", ArticleText = "", CategoryId = 1, ImageUrl = "" });
+            await context.SaveChangesAsync();
+            var result = service.All("Cbum", "People");
+
             Assert.That(result.TotalArticlesCount == 1);
         }
 

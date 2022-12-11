@@ -38,6 +38,132 @@ namespace ExeGuide.UnitTests.Tests
             context.Database.EnsureCreated();
         }
 
+        [Test]
+        public async Task AllExercisesByIdTest()
+        {
+
+            var repo = new Repository(context);
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            var newUser = new TrainingUser()
+            {
+                Id = "bcbssss-ecca-43c9-dss-c060c6f364e4",
+                Email = "daadad.dd",
+                NormalizedEmail = "daadad.dd",
+                UserName = "daadad.dd",
+                NormalizedUserName = "daadad.dd",
+                SecurityStamp = "agAAAAdsdsHRTRSD123ID9VE0dfskgfjek9nfp24EKSuid",
+                ConcurrencyStamp = ""
+            };
+
+            var exercise = context.Exercises.FirstOrDefault(e => e.Id == 1);
+
+            var userExercise = new TrainingUsersExercise()
+            {
+                ExerciseId = exercise.Id,
+                UserId = newUser.Id
+            };
+            context.TrainingUsersExercises.Add(userExercise);
+            context.SaveChangesAsync();
+            var result = service.AllExercisesById(newUser.Id);
+            Assert.That(result.Count() == 1);
+        }
+
+        [Test]
+        public async Task AddToFavTest()
+        {
+            var repo = new Repository(context);
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            var newUser = new TrainingUser()
+            {
+                Id = "bcbssss-ecca-43c9-dss-c060c6f364e4",
+                Email = "daadad.dd",
+                NormalizedEmail = "daadad.dd",
+                UserName = "daadad.dd",
+                NormalizedUserName = "daadad.dd",
+                SecurityStamp = "agAAAAdsdsHRTRSD123ID9VE0dfskgfjek9nfp24EKSuid",
+                ConcurrencyStamp = ""
+            };
+
+            var exercise = context.Exercises.FirstOrDefault(e => e.Id == 1);
+
+            service.AddToFav(newUser.Id,exercise.Id);
+            context.SaveChangesAsync();
+            var userExercise = context.TrainingUsersExercises.FirstOrDefault(e => e.UserId == newUser.Id);
+
+            var contains = userExercise.ExerciseId == exercise.Id;
+
+            Assert.That(contains);
+        }
+
+        [Test]
+        public async Task AddToFavTest2()
+        {
+            var repo = new Repository(context);
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            var newUser = new TrainingUser()
+            {
+                Id = "bcbssss-ecca-43c9-dss-c060c6f364e4",
+                Email = "daadad.dd",
+                NormalizedEmail = "daadad.dd",
+                UserName = "daadad.dd",
+                NormalizedUserName = "daadad.dd",
+                SecurityStamp = "agAAAAdsdsHRTRSD123ID9VE0dfskgfjek9nfp24EKSuid",
+                ConcurrencyStamp = ""
+            };
+
+            var exercise = context.Exercises.FirstOrDefault(e => e.Id == 1);
+
+            service.AddToFav(newUser.Id, exercise.Id);
+            context.SaveChangesAsync();
+            service.AddToFav(newUser.Id, exercise.Id);
+            context.SaveChangesAsync();
+           
+            var userEX = context.TrainingUsersExercises.Where(e => e.ExerciseId == exercise.Id)
+                .Where(a => a.UserId == newUser.Id); 
+           
+
+            Assert.That(userEX.Count() == 1);
+        }
+
+        [Test]
+        public async Task RemoveToFavTest()
+        {
+           
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            var newUser = new TrainingUser()
+            {
+                Id = "bcbssss-ecca-43c9-dss-c060c6f364e4",
+                Email = "daadad.dd",
+                NormalizedEmail = "daadad.dd",
+                UserName = "daadad.dd",
+                NormalizedUserName = "daadad.dd",
+                SecurityStamp = "agAAAAdsdsHRTRSD123ID9VE0dfskgfjek9nfp24EKSuid",
+                ConcurrencyStamp = ""
+            };
+
+            var exercise = context.Exercises.FirstOrDefault(e => e.Id == 1);
+
+            service.AddToFav(newUser.Id, exercise.Id);
+            context.SaveChangesAsync();
+            service.RemoveFromFavourite(exercise.Id, newUser.Id);
+            context.SaveChangesAsync();
+            var check = new TrainingUsersExercise()
+            {
+                ExerciseId = exercise.Id,
+                UserId = newUser.Id
+            };
+            var contains = context.TrainingUsersExercises.Contains(check);
+
+            Assert.That(contains is false);
+        }
 
 
 
@@ -220,6 +346,74 @@ namespace ExeGuide.UnitTests.Tests
             Assert.That(result.TotalExercisesCount == 6);
 
         }
+
+        [Test]
+        public async Task AllExercisesIfStatement1Test()
+        {
+            var repo = new Repository(context);
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            context.SaveChangesAsync();
+            var result = service.All("Chest Press");
+
+            
+            Assert.That(result.TotalExercisesCount == 3);
+
+        }
+        [Test]
+        public async Task AllExercisesIfStatement2Test()
+        {
+            var repo = new Repository(context);
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            context.SaveChangesAsync();
+            var result = service.All("","Chest");
+
+
+            Assert.That(result.TotalExercisesCount == 1);
+
+        }
+        [Test]
+        public async Task AllExercisesIfStatement3Test()
+        {
+            var repo = new Repository(context);
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            context.SaveChangesAsync();
+            var result = service.All("", "","Upper Chest");
+
+
+            Assert.That(result.TotalExercisesCount == 0);
+
+        }
+
+
+        [Test]
+        public async Task AllExercisesIfStatement4Test()
+        {
+            var repo = new Repository(context);
+            userService = new UserService(context);
+            service = new ExerciseService(context, userService);
+
+            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            context.SaveChangesAsync();
+            var result = service.All("", "", "", "Barbell");
+
+
+            Assert.That(result.TotalExercisesCount == 1);
+
+        }
+
 
         [Test]
         public async Task AllEquipmentNamesTest()
