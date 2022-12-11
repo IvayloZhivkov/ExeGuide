@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" style="background-color:orange">
+<html lang="en" style="background-color: #eab85d">
 <head >
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
     height: 600px;
     background-size: cover;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:lightgray">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-image:linear-gradient(to right,#64646c,rgb(200,200,220))">
             <div class="container-fluid" style="background-color: lightgray">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ExeGuide</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -27,23 +27,23 @@
                     <ul class="navbar-nav flex-grow-1">
                         <div class="vertLine"> </div>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="All">All Exercises</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Exercise" asp-action="All">All Exercises</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="All">Articles</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Article" asp-action="All">Articles</a>
                         </li>
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <div class="vertLine"> </div>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Mine">My Favourites</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Exercise" asp-action="Mine">My Favourites</a>
                             </li>
                         }
                         @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated)
                         {
                             <div class="vertLine"> </div>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="Add">Add Exercises</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Exercise" asp-action="Add">Add Exercises</a>
                             </li>
                         }
 
@@ -59,7 +59,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" style="position: fixed;bottom: 0; width: 100%;height: 30px; border:none; background-color:dimgray" st>
+    <footer class="border-top footer text-muted" style="position: fixed;bottom: 0; width: 100%;height: 30px; border:none; background-image:linear-gradient(to right,#64646c,rgb(200,200,220))" st>
         <div class="container" style="color:lightgray">
             2022 - TrainingHelper
         </div>
