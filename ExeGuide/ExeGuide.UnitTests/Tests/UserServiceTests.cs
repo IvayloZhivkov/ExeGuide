@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Castle.Components.DictionaryAdapter.Xml;
-using ExeGuide.Core.Infrastructure;
+
 using ExeGuide.Core.Services.Exercises;
 using ExeGuide.Core.Services.Users;
 using ExeGuide.DataBase.Data;
@@ -17,7 +17,7 @@ namespace ExeGuide.UnitTests.Tests
     [TestFixture]
     public class UserServiceTests
     {
-        private IRepository repo;
+       
         private ExeGuideDbContext context;
         private ExerciseService service;
         private IUserService userService;
@@ -38,7 +38,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task UserExistByIdTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -51,7 +51,6 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task GetUserByIdTest()
         {
-            var repo = new Repository(context);
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -64,7 +63,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task GetUserIdTest()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -78,7 +77,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AddNewUserTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 

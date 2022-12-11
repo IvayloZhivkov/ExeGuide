@@ -12,7 +12,6 @@ using ExeGuide.DataBase.Data.Entities;
 using ExeGuide.Core.Services.Exercises;
 using ExeGuide.Core.Services.Users;
 using Microsoft.EntityFrameworkCore.Migrations;
-using ExeGuide.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 
 namespace ExeGuide.UnitTests.Tests
@@ -20,7 +19,6 @@ namespace ExeGuide.UnitTests.Tests
     [TestFixture]
     public class ExerciseServiceTests
     {
-        private IRepository repo;
         private ExeGuideDbContext context;
         private ExerciseService service;
         private IUserService userService;
@@ -42,7 +40,7 @@ namespace ExeGuide.UnitTests.Tests
         public async Task AllExercisesByIdTest()
         {
 
-            var repo = new Repository(context);
+
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -73,7 +71,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AddToFavTest()
         {
-            var repo = new Repository(context);
+
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -90,7 +88,7 @@ namespace ExeGuide.UnitTests.Tests
 
             var exercise = context.Exercises.FirstOrDefault(e => e.Id == 1);
 
-            service.AddToFav(newUser.Id,exercise.Id);
+            service.AddToFav(newUser.Id, exercise.Id);
             context.SaveChangesAsync();
             var userExercise = context.TrainingUsersExercises.FirstOrDefault(e => e.UserId == newUser.Id);
 
@@ -102,7 +100,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AddToFavTest2()
         {
-            var repo = new Repository(context);
+
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -123,10 +121,10 @@ namespace ExeGuide.UnitTests.Tests
             context.SaveChangesAsync();
             service.AddToFav(newUser.Id, exercise.Id);
             context.SaveChangesAsync();
-           
+
             var userEX = context.TrainingUsersExercises.Where(e => e.ExerciseId == exercise.Id)
-                .Where(a => a.UserId == newUser.Id); 
-           
+                .Where(a => a.UserId == newUser.Id);
+
 
             Assert.That(userEX.Count() == 1);
         }
@@ -134,7 +132,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task RemoveToFavTest()
         {
-           
+
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -152,9 +150,9 @@ namespace ExeGuide.UnitTests.Tests
             var exercise = context.Exercises.FirstOrDefault(e => e.Id == 1);
 
             service.AddToFav(newUser.Id, exercise.Id);
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             service.RemoveFromFavourite(exercise.Id, newUser.Id);
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             var check = new TrainingUsersExercise()
             {
                 ExerciseId = exercise.Id,
@@ -170,13 +168,13 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task MainCategoryExistsTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
 
-            repo.AddAsync(new MainCategory { Id = 1, MainCategoryName = "Muscle1" });
-            repo.AddAsync(new MainCategory { Id = 2, MainCategoryName = "Muscle2" });
+            context.AddAsync(new MainCategory { Id = 1, MainCategoryName = "Muscle1" });
+            context.AddAsync(new MainCategory { Id = 2, MainCategoryName = "Muscle2" });
             context.SaveChangesAsync();
 
             bool exists = service.MainCategoryExists(1);
@@ -186,13 +184,13 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task SubCategoryExistsTest()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
 
-            repo.AddAsync(new SubCategory { Id = 1, SubCategoryName = "Muscle1" });
-            repo.AddAsync(new SubCategory { Id = 2, SubCategoryName = "Muscle2" });
+            context.AddAsync(new SubCategory { Id = 1, SubCategoryName = "Muscle1" });
+            context.AddAsync(new SubCategory { Id = 2, SubCategoryName = "Muscle2" });
             context.SaveChangesAsync();
 
             bool exists = service.SubCategoryExists(2);
@@ -203,13 +201,13 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task EquipmentExistsTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
 
-            repo.AddAsync(new Equipment { Id = 1, Name = "Eq1" });
-            repo.AddAsync(new Equipment { Id = 2, Name = "Eq2" });
+            context.AddAsync(new Equipment { Id = 1, Name = "Eq1" });
+            context.AddAsync(new Equipment { Id = 2, Name = "Eq2" });
             context.SaveChangesAsync();
 
             bool exists = service.EquipmentExists(1);
@@ -219,13 +217,13 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task EquipmentIdTest()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
 
-            repo.AddAsync(new Equipment { Id = 1, Name = "Eq1" });
-            repo.AddAsync(new Equipment { Id = 2, Name = "Eq2" });
+            context.AddAsync(new Equipment { Id = 1, Name = "Eq1" });
+            context.AddAsync(new Equipment { Id = 2, Name = "Eq2" });
             context.SaveChangesAsync();
 
             int id = service.EquipmentId(1);
@@ -234,13 +232,13 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task SubCategoryIdTest()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
 
-            repo.AddAsync(new SubCategory() { Id = 1, SubCategoryName = "Muscle1" });
-            repo.AddAsync(new SubCategory() { Id = 2, SubCategoryName = "Muscle2" });
+            context.AddAsync(new SubCategory() { Id = 1, SubCategoryName = "Muscle1" });
+            context.AddAsync(new SubCategory() { Id = 2, SubCategoryName = "Muscle2" });
             context.SaveChangesAsync();
 
             int id = service.SubCategoryId(2);
@@ -249,13 +247,13 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task MainCategoryIdTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
 
-            repo.AddAsync(new MainCategory() { Id = 1, MainCategoryName = "Muscle1" });
-            repo.AddAsync(new MainCategory() { Id = 2, MainCategoryName = "Muscle2" });
+            context.AddAsync(new MainCategory() { Id = 1, MainCategoryName = "Muscle1" });
+            context.AddAsync(new MainCategory() { Id = 2, MainCategoryName = "Muscle2" });
             context.SaveChangesAsync();
 
             int id = service.MainCategoryId(1);
@@ -266,12 +264,12 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task DeleteExerciseTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
 
-            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
             await context.SaveChangesAsync();
             service.Delete(99);
             await context.SaveChangesAsync();
@@ -283,7 +281,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task CreateExerciseTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -304,7 +302,7 @@ namespace ExeGuide.UnitTests.Tests
         public async Task EditExerciseTest()
         {
 
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -319,7 +317,7 @@ namespace ExeGuide.UnitTests.Tests
                 EquipmentId = 1,
             };
 
-            repo.AddAsync(newExercise);
+            context.AddAsync(newExercise);
             context.SaveChangesAsync();
 
             service.Edit(99, "newEx", "dddd", "dwsd", 1, 1, 1);
@@ -333,12 +331,12 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllExercisesTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
-            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
-            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
             context.SaveChangesAsync();
             var result = service.All();
 
@@ -350,30 +348,30 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllExercisesIfStatement1Test()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
-            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
-            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
             context.SaveChangesAsync();
             var result = service.All("Chest Press");
 
-            
+
             Assert.That(result.TotalExercisesCount == 3);
 
         }
         [Test]
         public async Task AllExercisesIfStatement2Test()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
-            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
-            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
             context.SaveChangesAsync();
-            var result = service.All("","Chest");
+            var result = service.All("", "Chest");
 
 
             Assert.That(result.TotalExercisesCount == 1);
@@ -382,14 +380,14 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllExercisesIfStatement3Test()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
-            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
-            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
             context.SaveChangesAsync();
-            var result = service.All("", "","Upper Chest");
+            var result = service.All("", "", "Upper Chest");
 
 
             Assert.That(result.TotalExercisesCount == 0);
@@ -400,12 +398,12 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllExercisesIfStatement4Test()
         {
-            var repo = new Repository(context);
+          
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
-            await repo.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
-            await repo.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 99, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
+            await context.AddAsync(new Exercise() { Id = 98, Name = "Chest Press", Description = "", EquipmentId = 1, MainCategoryId = 2, SubCategoryId = 3, ImageUrl = "" });
             context.SaveChangesAsync();
             var result = service.All("", "", "", "Barbell");
 
@@ -418,10 +416,10 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllEquipmentNamesTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
-            
+
 
             var names = service.AllEquipmentNames();
             //7 because we initialize equipments to the database(ExeGuide.Database.Data.Configurations.EquipmentConfiguration)
@@ -431,10 +429,10 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllMainCategoryNamesTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
-            
+
 
             var names = service.AllMainCategoriesNames();
             //8+6 because we initialize MainCategories to the database(ExeGuide.Database.Data.Configurations.MainCategoryConfiguration)
@@ -444,7 +442,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllSubCategoryNamesTest()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -457,7 +455,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task ExerciseDetailsById()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -483,7 +481,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllMainCategoriesTest()
         {
-            var repo = new Repository(context);
+            
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -495,7 +493,7 @@ namespace ExeGuide.UnitTests.Tests
         [Test]
         public async Task AllSubCategoriesTest()
         {
-            var repo = new Repository(context);
+          
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -504,9 +502,10 @@ namespace ExeGuide.UnitTests.Tests
             Assert.That(result.Count() == 32);
         }
 
-        [Test] public async Task AllEqipmentTest()
+        [Test]
+        public async Task AllEqipmentTest()
         {
-            var repo = new Repository(context);
+           
             userService = new UserService(context);
             service = new ExerciseService(context, userService);
 
@@ -515,7 +514,7 @@ namespace ExeGuide.UnitTests.Tests
             Assert.That(result.Count() == 7);
         }
 
-      
+
         [TearDown]
         public void TearDown()
         {
